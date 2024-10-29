@@ -12,6 +12,14 @@ Provided is a ruby file to convert CSVs available on CodePlex into a format usab
 well as a Postgres script to create the tables, load the data, convert the hierarchyid columns, add
 primary and foreign keys, and create some of the views used by Adventureworks.
 
+> [!IMPORTANT]
+> The Postgres script is adjusted to have all names following Posgres's conventions that uses `snake_case` instead of the original `CamelCase`.
+>
+> The original script doesn't have double quotes wrapped around the names so they are automatically undercased by Postgres which is extremely hard to read. For example, the column `HumanResources.EmployeeDepartmentHistory.BusinessEntityID` will be transformed by:
+>
+> - Original: `humanresources.employeedepartmenthistory.businessentityid`.
+> - My Fork: `human_resources.employee_department_history.business_entity_id`.
+
 ## How to set up the database:
 
 Download [Adventure Works 2014 OLTP Script](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks-oltp-install-script.zip).
@@ -19,20 +27,25 @@ Download [Adventure Works 2014 OLTP Script](https://github.com/Microsoft/sql-ser
 Extract the .zip and copy all of the CSV files into the `./data` folder.
 
 Modify the CSVs to work with Postgres by running:
-```
+
+```sh
 ruby update_csvs.rb
 ```
+
 Create the database and tables, import the data, and set up the views and keys with:
+
+```sh
+psql -c "CREATE DATABASE adventure_works;"
+psql -d adventure_works < install.sql
 ```
-psql -c "CREATE DATABASE \"Adventureworks\";"
-psql -d Adventureworks < install.sql
-```
+
 (If you do not have a database created for your user account then you may need to also add:  `-U postgres`  to the above two commands.)
 
 All 68 tables are properly set up, and 11 of the 20 views are established.  The ones not built are those that rely on XML functions like value and ref.  To see a list of tables, open psql, and then connect to the database and show all the tables with these two commands:
-```
-\c "Adventureworks"
-\dt (humanresources|person|production|purchasing|sales).*
+
+```sh
+\c adventure_works
+\dt (human_resources|person|production|purchasing|sales).*
 ```
 
 ## Using with Docker
@@ -40,7 +53,6 @@ All 68 tables are properly set up, and 11 of the 20 views are established.  The 
 You can spin up a new database using **Docker** with `docker-compose up`.
 
 _You will need to rename the Adventure Works 2014 OLTP Script archive to **adventure_works_2014_OLTP_script.zip** to get this to work!_
-
 
 ## Motivation
 
@@ -69,7 +81,7 @@ this to help people learn a new environment.
 
 As well, with the imminent release of SQL Server 2017 for Linux, this sample could be used to
 evaluate performance differences between Postgres and SQL 2017.  Never thought I'd see the day that
-MS SQL got compiled for Linux, but alas, here we are. 
+MS SQL got compiled for Linux, but alas, here we are.
 
 Let's keep coding fun.
 

@@ -3,54 +3,64 @@
 # AdventureWorks for Postgres
 #  by Lorin Thwaits
 
-# How to use this file:
+# How to use this script:
 
 # Download "Adventure Works 2014 OLTP Script" from:
-#   https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks-oltp-install-script.zip
+#   https://msftdbprodsamples.codeplex.com/downloads/get/880662
 
 # Extract the .zip and copy all of the CSV files into the same folder containing
-# this update_csvs.rb file and the install.sql file.
+# this install.sql file and the update_csvs.rb file.
 
 # Modify the CSVs to work with Postgres by running:
 #   ruby update_csvs.rb
 
 # Create the database and tables, import the data, and set up the views and keys with:
-#   psql -c "CREATE DATABASE \"Adventureworks\";"
-#   psql -d Adventureworks < install.sql
-
-# (you may need to also add:  -U postgres  to the above two commands)
+#   psql -c "CREATE DATABASE adventure_works;"
+#   psql -d adventure_works < install.sql
 
 # All 68 tables are properly set up.
 # All 20 views are established.
 # 68 additional convenience views are added which:
 #   * Provide a shorthand to refer to tables.
 #   * Add an "id" column to a primary key or primary-ish key if it makes sense.
-
+#
 #   For example, with the convenience views you can simply do:
-#       SELECT pe.p.firstname, hr.e.jobtitle
+#       SELECT pe.p.first_name, hr.e.job_title
 #       FROM pe.p
 #         INNER JOIN hr.e ON pe.p.id = hr.e.id;
 #   Instead of:
-#       SELECT p.firstname, e.jobtitle
+#       SELECT p.first_name, e.job_title
 #       FROM person.person AS p
-#         INNER JOIN humanresources.employee AS e ON p.businessentityid = e.businessentityid;
-
+#         INNER JOIN human_resources.employee AS e ON p.business_entity_id = e.business_entity_id;
+#
 # Schemas for these views:
 #   pe = person
-#   hr = humanresources
+#   hr = human_resources
 #   pr = production
 #   pu = purchasing
 #   sa = sales
-# Easily get a list of all of these in psql with:  \dv (pe|hr|pr|pu|sa).*
+# Easily get a list of all of these with:  \dv (pe|hr|pr|pu|sa).*
 
 # Enjoy!
 
 
+class String
+  def to_snake
+    self.gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+        .downcase
+  end
+end
+
 Dir.glob('./data/*.csv') do |csv_file|
-  f = if (is_needed = csv_file.end_with?('/Address.csv'))
-        File.open(csv_file, "rb:WINDOWS-1252:UTF-8")
+  csv_file_new = csv_file[0...-4].to_snake + ".csv"
+  puts "Renaming to #{csv_file_new}"
+  File.rename(csv_file, csv_file_new)
+
+  f = if (is_needed = csv_file_new.end_with?('/Address.csv'))
+        File.open(csv_file_new, "rb:WINDOWS-1252:UTF-8")
       else
-        File.open(csv_file, "rb:UTF-16LE:UTF-8")
+        File.open(csv_file_new, "rb:UTF-16LE:UTF-8")
       end
   output = ""
   text = ""
@@ -86,17 +96,17 @@ Dir.glob('./data/*.csv') do |csv_file|
     else
       output << line.gsub(/\"/, "\"\"").gsub(/\&\|\n/, "\n").gsub(/\&\|\r\n/, "\n")
                     .gsub("\tE6100000010C", "\t\\\\xE6100000010C") # For geospatial data
-                    .gsub(/\r\n/, "\n") # Make everything compatible with Windows -- change \r\n into just \n
+                    .gsub(/\r\n/, "\n") # Make everything compatible with Windows # change \r\n into just \n
     end
   end
   if is_needed
-    puts "Processing #{csv_file}"
+    puts "Processing #{csv_file_new}"
     f.close
-    w = File.open(csv_file + ".xyz", "w")
+    w = File.open(csv_file_new + ".xyz", "w")
     w.write(output)
     w.close
-    File.delete(csv_file)
-    File.rename(csv_file + ".xyz", csv_file)
+    File.delete(csv_file_new)
+    File.rename(csv_file_new + ".xyz", csv_file_new)
   end
 
   # Here's a list of files that get snagged here:
@@ -124,3 +134,4 @@ Dir.glob('./data/*.csv') do |csv_file|
     f.close
   end
 end
+
