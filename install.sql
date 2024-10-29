@@ -47,6 +47,8 @@
 --   FROM pg_stat_activity
 --   WHERE pid <> pg_backend_pid() AND datname='Adventureworks';
 
+\cd data
+
 \pset tuples_only on
 
 -- Support to auto-generate UUIDs (aka GUIDs)
@@ -175,31 +177,31 @@ CREATE SCHEMA Person
 COMMENT ON SCHEMA Person IS 'Contains objects related to names and addresses of customers, vendors, and employees';
 
 SELECT 'Copying data into Person.BusinessEntity';
-\copy Person.BusinessEntity FROM './BusinessEntity.csv' DELIMITER E'\t' CSV;
+\copy Person.BusinessEntity FROM 'BusinessEntity.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.Person';
-\copy Person.Person FROM './Person.csv' DELIMITER E'\t' CSV;
+\copy Person.Person FROM 'Person.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.StateProvince';
-\copy Person.StateProvince FROM './StateProvince.csv' DELIMITER E'\t' CSV;
+\copy Person.StateProvince FROM 'StateProvince.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.Address';
-\copy Person.Address FROM './Address.csv' DELIMITER E'\t' CSV ENCODING 'latin1';
+\copy Person.Address FROM 'Address.csv' DELIMITER E'\t' CSV ENCODING 'latin1';
 SELECT 'Copying data into Person.AddressType';
-\copy Person.AddressType FROM './AddressType.csv' DELIMITER E'\t' CSV;
+\copy Person.AddressType FROM 'AddressType.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.BusinessEntityAddress';
-\copy Person.BusinessEntityAddress FROM './BusinessEntityAddress.csv' DELIMITER E'\t' CSV;
+\copy Person.BusinessEntityAddress FROM 'BusinessEntityAddress.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.ContactType';
-\copy Person.ContactType FROM './ContactType.csv' DELIMITER E'\t' CSV;
+\copy Person.ContactType FROM 'ContactType.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.BusinessEntityContact';
-\copy Person.BusinessEntityContact FROM './BusinessEntityContact.csv' DELIMITER E'\t' CSV;
+\copy Person.BusinessEntityContact FROM 'BusinessEntityContact.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.EmailAddress';
-\copy Person.EmailAddress FROM './EmailAddress.csv' DELIMITER E'\t' CSV;
+\copy Person.EmailAddress FROM 'EmailAddress.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.Password';
-\copy Person.Password FROM './Password.csv' DELIMITER E'\t' CSV;
+\copy Person.Password FROM 'Password.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.PhoneNumberType';
-\copy Person.PhoneNumberType FROM './PhoneNumberType.csv' DELIMITER E'\t' CSV;
+\copy Person.PhoneNumberType FROM 'PhoneNumberType.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.PersonPhone';
-\copy Person.PersonPhone FROM './PersonPhone.csv' DELIMITER E'\t' CSV;
+\copy Person.PersonPhone FROM 'PersonPhone.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into Person.CountryRegion';
-\copy Person.CountryRegion FROM './CountryRegion.csv' DELIMITER E'\t' CSV;
+\copy Person.CountryRegion FROM 'CountryRegion.csv' DELIMITER E'\t' CSV;
 
 
 CREATE SCHEMA HumanResources
@@ -268,17 +270,17 @@ CREATE SCHEMA HumanResources
 COMMENT ON SCHEMA HumanResources IS 'Contains objects related to employees and departments.';
 
 SELECT 'Copying data into HumanResources.Department';
-\copy HumanResources.Department FROM './Department.csv' DELIMITER E'\t' CSV;
+\copy HumanResources.Department FROM 'Department.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into HumanResources.Employee';
-\copy HumanResources.Employee FROM './Employee.csv' DELIMITER E'\t' CSV;
+\copy HumanResources.Employee FROM 'Employee.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into HumanResources.EmployeeDepartmentHistory';
-\copy HumanResources.EmployeeDepartmentHistory FROM './EmployeeDepartmentHistory.csv' DELIMITER E'\t' CSV;
+\copy HumanResources.EmployeeDepartmentHistory FROM 'EmployeeDepartmentHistory.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into HumanResources.EmployeePayHistory';
-\copy HumanResources.EmployeePayHistory FROM './EmployeePayHistory.csv' DELIMITER E'\t' CSV;
+\copy HumanResources.EmployeePayHistory FROM 'EmployeePayHistory.csv' DELIMITER E'\t' CSV;
 SELECT 'Copying data into HumanResources.JobCandidate';
-\copy HumanResources.JobCandidate FROM './JobCandidate.csv' DELIMITER E'\t' CSV ENCODING 'latin1';
+\copy HumanResources.JobCandidate FROM 'JobCandidate.csv' DELIMITER E'\t' CSV ENCODING 'latin1';
 SELECT 'Copying data into HumanResources.Shift';
-\copy HumanResources.Shift FROM './Shift.csv' DELIMITER E'\t' CSV;
+\copy HumanResources.Shift FROM 'Shift.csv' DELIMITER E'\t' CSV;
 
 -- Calculated column that needed to be there just for the CSV import
 ALTER TABLE HumanResources.Employee DROP COLUMN OrganizationLevel;

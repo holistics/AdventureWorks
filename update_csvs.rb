@@ -46,7 +46,7 @@
 # Enjoy!
 
 
-Dir.glob('./*.csv') do |csv_file|
+Dir.glob('./data/*.csv') do |csv_file|
   f = if (is_needed = csv_file.end_with?('/Address.csv'))
         File.open(csv_file, "rb:WINDOWS-1252:UTF-8")
       else
