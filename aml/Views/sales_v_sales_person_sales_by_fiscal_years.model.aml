@@ -1,0 +1,51 @@
+Model sales_v_sales_person_sales_by_fiscal_years {
+  type: 'table'
+  label: 'V Sales Person Sales By Fiscal Years'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension sales_person_id {
+    label: 'Sales Person Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_person_id }};;
+  }
+  dimension full_name {
+    label: 'Full Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.full_name }};;
+  }
+  dimension job_title {
+    label: 'Job Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_title }};;
+  }
+  dimension sales_territory {
+    label: 'Sales Territory'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_territory }};;
+  }
+  dimension _2012 {
+    label: '2012'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.2012 }};;
+  }
+  dimension _2013 {
+    label: '2013'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.2013 }};;
+  }
+  dimension _2014 {
+    label: '2014'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.2014 }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."v_sales_person_sales_by_fiscal_years"'
+}

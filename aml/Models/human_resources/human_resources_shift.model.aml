@@ -1,0 +1,39 @@
+Model human_resources_shift {
+  type: 'table'
+  label: 'Shift'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension shift_id {
+    label: 'Shift Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.shift_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension start_time {
+    label: 'Start Time'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_time }};;
+  }
+  dimension end_time {
+    label: 'End Time'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_time }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."shift"'
+}

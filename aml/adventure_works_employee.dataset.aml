@@ -1,0 +1,59 @@
+Dataset adventure_works_employee {
+  label: 'Adventure Works (Employee)'
+  description: ''
+  data_source_name: 'adventure_works'
+  models: [
+    person_address_type,
+    human_resources_department,
+    person_email_address,
+    person_address,
+    person_business_entity_address,
+    person_password,
+    person_country_region,
+    person_phone_number_type,
+    person_person,
+    person_business_entity,
+    person_business_entity_contact,
+    person_person_phone,
+    person_contact_type,
+    human_resources_employee_pay_history,
+    human_resources_shift,
+    human_resources_employee_department_history,
+    person_state_province,
+    human_resources_job_candidate,
+    human_resources_employee
+    ,
+    sales_sales_person,
+    sales_sales_person_quota_history,
+    sales_sales_order_header,
+    sales_sales_order_detail
+  ]
+  relationships: [
+    relationship(human_resources_employee.business_entity_id - person_person.business_entity_id, true),
+    relationship(human_resources_employee_department_history.department_id > human_resources_department.department_id, true),
+    relationship(human_resources_employee_department_history.business_entity_id > human_resources_employee.business_entity_id, true),
+    relationship(human_resources_employee_department_history.shift_id > human_resources_shift.shift_id, true),
+    relationship(human_resources_employee_pay_history.business_entity_id > human_resources_employee.business_entity_id, true),
+    relationship(human_resources_job_candidate.business_entity_id > human_resources_employee.business_entity_id, true),
+    relationship(person_address.state_province_id > person_state_province.state_province_id, true),
+    relationship(person_business_entity_address.address_id > person_address.address_id, true),
+    relationship(person_business_entity_address.address_type_id > person_address_type.address_type_id, true),
+    relationship(person_business_entity_address.business_entity_id > person_business_entity.business_entity_id, true),
+    relationship(person_business_entity_contact.person_id > person_person.business_entity_id, false),
+    relationship(person_business_entity_contact.contact_type_id > person_contact_type.contact_type_id, true),
+    relationship(person_business_entity_contact.business_entity_id > person_business_entity.business_entity_id, true),
+    relationship(person_email_address.business_entity_id > person_person.business_entity_id, true),
+    relationship(person_password.business_entity_id - person_person.business_entity_id, true),
+    relationship(person_person.business_entity_id - person_business_entity.business_entity_id, true),
+    relationship(person_person_phone.business_entity_id > person_person.business_entity_id, true),
+    relationship(person_person_phone.phone_number_type_id > person_phone_number_type.phone_number_type_id, true),
+    relationship(person_state_province.country_region_code > person_country_region.country_region_code, true)
+    ,
+    relationship(sales_sales_order_header.sales_person_id > sales_sales_person.business_entity_id, true)
+    ,
+    relationship(sales_sales_person.business_entity_id > human_resources_employee.business_entity_id, true)
+    ,
+    relationship(sales_sales_person_quota_history.business_entity_id > sales_sales_person.business_entity_id, true)
+  ]
+  owner: 'admin@tenant40.com'
+}

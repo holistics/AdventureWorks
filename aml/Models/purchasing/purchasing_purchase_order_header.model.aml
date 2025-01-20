@@ -1,0 +1,81 @@
+Model purchasing_purchase_order_header {
+  type: 'table'
+  label: 'Purchase Order Header'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension purchase_order_id {
+    label: 'Purchase Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_id }};;
+  }
+  dimension revision_number {
+    label: 'Revision Number'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.revision_number }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension employee_id {
+    label: 'Employee Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.employee_id }};;
+  }
+  dimension vendor_id {
+    label: 'Vendor Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.vendor_id }};;
+  }
+  dimension ship_method_id {
+    label: 'Ship Method Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_method_id }};;
+  }
+  dimension order_date {
+    label: 'Order Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_date }};;
+  }
+  dimension ship_date {
+    label: 'Ship Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_date }};;
+  }
+  dimension sub_total {
+    label: 'Sub Total'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sub_total }};;
+  }
+  dimension tax_amt {
+    label: 'Tax Amt'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_amt }};;
+  }
+  dimension freight {
+    label: 'Freight'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.freight }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"purchasing"."purchase_order_header"'
+}

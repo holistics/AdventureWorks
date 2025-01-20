@@ -1,0 +1,27 @@
+Model production_scrap_reason {
+  type: 'table'
+  label: 'Scrap Reason'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension scrap_reason_id {
+    label: 'Scrap Reason Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.scrap_reason_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."scrap_reason"'
+}

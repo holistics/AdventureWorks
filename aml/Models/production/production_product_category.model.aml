@@ -1,0 +1,33 @@
+Model production_product_category {
+  type: 'table'
+  label: 'Product Category'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_category_id {
+    label: 'Product Category Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_category_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_category"'
+}

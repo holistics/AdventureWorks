@@ -1,0 +1,33 @@
+Model sales_sales_reason {
+  type: 'table'
+  label: 'Sales Reason'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension sales_reason_id {
+    label: 'Sales Reason Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_reason_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension reason_type {
+    label: 'Reason Type'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.reason_type }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."sales_reason"'
+}

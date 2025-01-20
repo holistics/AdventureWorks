@@ -1,0 +1,75 @@
+Model purchasing_product_vendor {
+  type: 'table'
+  label: 'Product Vendor'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension average_lead_time {
+    label: 'Average Lead Time'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.average_lead_time }};;
+  }
+  dimension standard_price {
+    label: 'Standard Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.standard_price }};;
+  }
+  dimension last_receipt_cost {
+    label: 'Last Receipt Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_receipt_cost }};;
+  }
+  dimension last_receipt_date {
+    label: 'Last Receipt Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_receipt_date }};;
+  }
+  dimension min_order_qty {
+    label: 'Min Order Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.min_order_qty }};;
+  }
+  dimension max_order_qty {
+    label: 'Max Order Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.max_order_qty }};;
+  }
+  dimension on_order_qty {
+    label: 'On Order Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.on_order_qty }};;
+  }
+  dimension unit_measure_code {
+    label: 'Unit Measure Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_measure_code }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"purchasing"."product_vendor"'
+}

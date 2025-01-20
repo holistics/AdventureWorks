@@ -1,0 +1,81 @@
+Model sales_v_store_with_contact {
+  type: 'table'
+  label: 'V Store With Contact'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension contact_type {
+    label: 'Contact Type'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.contact_type }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension middle_name {
+    label: 'Middle Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.middle_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension suffix {
+    label: 'Suffix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.suffix }};;
+  }
+  dimension phone_number {
+    label: 'Phone Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.phone_number }};;
+  }
+  dimension phone_number_type {
+    label: 'Phone Number Type'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.phone_number_type }};;
+  }
+  dimension email_address {
+    label: 'Email Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address }};;
+  }
+  dimension email_promotion {
+    label: 'Email Promotion'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_promotion }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."v_store_with_contact"'
+}

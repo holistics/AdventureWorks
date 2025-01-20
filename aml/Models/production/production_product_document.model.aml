@@ -1,0 +1,27 @@
+Model production_product_document {
+  type: 'table'
+  label: 'Product Document'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension document_node {
+    label: 'Document Node'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.document_node }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_document"'
+}

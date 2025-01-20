@@ -1,0 +1,27 @@
+Model production_culture {
+  type: 'table'
+  label: 'Culture'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension culture_id {
+    label: 'Culture Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.culture_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."culture"'
+}

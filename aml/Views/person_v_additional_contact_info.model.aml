@@ -1,0 +1,111 @@
+Model person_v_additional_contact_info {
+  type: 'table'
+  label: 'V Additional Contact Info'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension middle_name {
+    label: 'Middle Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.middle_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension telephonenumber {
+    label: 'Telephonenumber'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.telephonenumber }};;
+  }
+  dimension telephonespecialinstructions {
+    label: 'Telephonespecialinstructions'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.telephonespecialinstructions }};;
+  }
+  dimension street {
+    label: 'Street'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.street }};;
+  }
+  dimension city {
+    label: 'City'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.city }};;
+  }
+  dimension state_province {
+    label: 'State Province'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_province }};;
+  }
+  dimension postal_code {
+    label: 'Postal Code'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.postal_code }};;
+  }
+  dimension country_region {
+    label: 'Country Region'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_region }};;
+  }
+  dimension home_address_special_instruction {
+    label: 'Home Address Special Instruction'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.home_address_special_instruction }};;
+  }
+  dimension email_address {
+    label: 'Email Address'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address }};;
+  }
+  dimension email_special_instructions {
+    label: 'Email Special Instructions'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_special_instructions }};;
+  }
+  dimension email_telephone_number {
+    label: 'Email Telephone Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_telephone_number }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."v_additional_contact_info"'
+}

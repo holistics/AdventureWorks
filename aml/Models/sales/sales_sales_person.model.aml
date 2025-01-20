@@ -1,0 +1,63 @@
+Model sales_sales_person {
+  type: 'table'
+  label: 'Sales Person'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
+  dimension sales_quota {
+    label: 'Sales Quota'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_quota }};;
+  }
+  dimension bonus {
+    label: 'Bonus'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bonus }};;
+  }
+  dimension commission_pct {
+    label: 'Commission Pct'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.commission_pct }};;
+  }
+  dimension sales_ytd {
+    label: 'Sales Ytd'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_ytd }};;
+  }
+  dimension sales_last_year {
+    label: 'Sales Last Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_last_year }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."sales_person"'
+}

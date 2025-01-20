@@ -1,0 +1,103 @@
+Model person_person {
+  type: 'table'
+  label: 'Person'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension person_type {
+    label: 'Person Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.person_type }};;
+  }
+  dimension name_style {
+    label: 'Name Style'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name_style }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension middle_name {
+    label: 'Middle Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.middle_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension full_name {
+    label: 'Full Name',
+    type: 'text',
+    hidden: false,
+    definition: @sql {{ #SOURCE.first_name }} || ' ' || {{ #SOURCE.middle_name }} || ' ' || {{ #SOURCE.last_name }};;
+  }
+  dimension suffix {
+    label: 'Suffix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.suffix }};;
+  }
+  dimension email_promotion {
+    label: 'Email Promotion'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_promotion }};;
+  }
+  dimension additional_contact_info {
+    label: 'Additional Contact Info'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.additional_contact_info }};;
+  }
+  dimension demographics {
+    label: 'Demographics'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.demographics }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension email_promotion_explanation {
+    label: "Email Promotion (explanation)"
+    type: "text"
+    definition: @sql CASE
+WHEN {{ email_promotion }} = 0 THEN 'No'
+WHEN {{ email_promotion }} = 1 THEN 'Yes (from AdventureWorks only)'
+WHEN {{ email_promotion }} = 2 THEN 'Yes'
+ELSE 'INVALID'
+END;;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."person"'
+}

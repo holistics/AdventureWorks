@@ -1,0 +1,33 @@
+Model human_resources_department {
+  type: 'table'
+  label: 'Department'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension department_id {
+    label: 'Department Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.department_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension group_name {
+    label: 'Group Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.group_name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."department"'
+}

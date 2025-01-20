@@ -1,0 +1,57 @@
+Model person_state_province {
+  type: 'table'
+  label: 'State Province'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension state_province_id {
+    label: 'State Province Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_province_id }};;
+  }
+  dimension state_province_code {
+    label: 'State Province Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_province_code }};;
+  }
+  dimension country_region_code {
+    label: 'Country Region Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_region_code }};;
+  }
+  dimension is_only_state_province_flag {
+    label: 'Is Only State Province Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.is_only_state_province_flag }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."state_province"'
+}

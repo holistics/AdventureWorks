@@ -1,0 +1,87 @@
+Model human_resources_v_job_candidate_education {
+  type: 'table'
+  label: 'V Job Candidate Education'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension job_candidate_id {
+    label: 'Job Candidate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_candidate_id }};;
+  }
+  dimension edu_level {
+    label: 'Edu.level'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Level }};;
+  }
+  dimension edu_start_date {
+    label: 'Edu.start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.start_date }};;
+  }
+  dimension edu_end_date {
+    label: 'Edu.end Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.end_date }};;
+  }
+  dimension edu_degree {
+    label: 'Edu.degree'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Degree }};;
+  }
+  dimension edu_major {
+    label: 'Edu.major'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Major }};;
+  }
+  dimension edu_minor {
+    label: 'Edu.minor'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Minor }};;
+  }
+  dimension edu_gpa {
+    label: 'Edu.gpa'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.GPA }};;
+  }
+  dimension edu_gpa_scale {
+    label: 'Edu.gpa Scale'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.GPAScale }};;
+  }
+  dimension edu_school {
+    label: 'Edu.school'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.School }};;
+  }
+  dimension edu_loc_country_region {
+    label: 'Edu.loc.country Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Loc.country_region }};;
+  }
+  dimension edu_loc_state {
+    label: 'Edu.loc.state'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Loc.State }};;
+  }
+  dimension edu_loc_city {
+    label: 'Edu.loc.city'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Edu.Loc.city }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."v_job_candidate_education"'
+}

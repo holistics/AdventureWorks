@@ -1,0 +1,69 @@
+Model sales_sales_territory {
+  type: 'table'
+  label: 'Sales Territory'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension country_region_code {
+    label: 'Country Region Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.country_region_code }};;
+  }
+  dimension group {
+    label: 'Group'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.group }};;
+  }
+  dimension sales_ytd {
+    label: 'Sales Ytd'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_ytd }};;
+  }
+  dimension sales_last_year {
+    label: 'Sales Last Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_last_year }};;
+  }
+  dimension cost_ytd {
+    label: 'Cost Ytd'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cost_ytd }};;
+  }
+  dimension cost_last_year {
+    label: 'Cost Last Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cost_last_year }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."sales_territory"'
+}

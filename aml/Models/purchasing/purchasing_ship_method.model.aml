@@ -1,0 +1,45 @@
+Model purchasing_ship_method {
+  type: 'table'
+  label: 'Ship Method'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension ship_method_id {
+    label: 'Ship Method Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_method_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension ship_base {
+    label: 'Ship Base'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_base }};;
+  }
+  dimension ship_rate {
+    label: 'Ship Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.ship_rate }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"purchasing"."ship_method"'
+}

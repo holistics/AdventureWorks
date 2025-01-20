@@ -1,0 +1,33 @@
+Model person_person_phone {
+  type: 'table'
+  label: 'Person Phone'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension phone_number {
+    label: 'Phone Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.phone_number }};;
+  }
+  dimension phone_number_type_id {
+    label: 'Phone Number Type Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.phone_number_type_id }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."person_phone"'
+}

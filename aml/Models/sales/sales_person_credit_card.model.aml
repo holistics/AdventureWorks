@@ -1,0 +1,27 @@
+Model sales_person_credit_card {
+  type: 'table'
+  label: 'Person Credit Card'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension credit_card_id {
+    label: 'Credit Card Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_card_id }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."person_credit_card"'
+}

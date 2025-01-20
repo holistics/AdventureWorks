@@ -1,0 +1,39 @@
+Model production_product_list_price_history {
+  type: 'table'
+  label: 'Product List Price History'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension end_date {
+    label: 'End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_date }};;
+  }
+  dimension list_price {
+    label: 'List Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.list_price }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_list_price_history"'
+}

@@ -1,0 +1,39 @@
+Model human_resources_employee_pay_history {
+  type: 'table'
+  label: 'Employee Pay History'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension rate_change_date {
+    label: 'Rate Change Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.rate_change_date }};;
+  }
+  dimension rate {
+    label: 'Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rate }};;
+  }
+  dimension pay_frequency {
+    label: 'Pay Frequency'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.pay_frequency }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."employee_pay_history"'
+}

@@ -1,0 +1,81 @@
+Model sales_v_store_with_demographics {
+  type: 'table'
+  label: 'V Store With Demographics'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension annual_sales {
+    label: 'Annual Sales'
+    type: 'number'
+    hidden: false
+    definition: @sql ({{ #SOURCE.AnnualSales }})::numeric;;
+  }
+  dimension annual_revenue {
+    label: 'Annual Revenue'
+    type: 'number'
+    hidden: false
+    definition: @sql ({{ #SOURCE.AnnualRevenue }})::numeric;;
+  }
+  dimension bank_name {
+    label: 'Bank Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.BankName }};;
+  }
+  dimension business_type {
+    label: 'Business Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.BusinessType }};;
+  }
+  dimension year_opened {
+    label: 'Year Opened'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.YearOpened }};;
+  }
+  dimension specialty {
+    label: 'Specialty'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Specialty }};;
+  }
+  dimension square_feet {
+    label: 'Square Feet'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.SquareFeet }};;
+  }
+  dimension brands {
+    label: 'Brands'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Brands }};;
+  }
+  dimension internet {
+    label: 'Internet'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Internet }};;
+  }
+  dimension number_employees {
+    label: 'Number Employees'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.NumberEmployees }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."v_store_with_demographics"'
+}

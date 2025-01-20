@@ -1,0 +1,87 @@
+Model production_document {
+  type: 'table'
+  label: 'Document'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension owner {
+    label: 'Owner'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.owner }};;
+  }
+  dimension folder_flag {
+    label: 'Folder Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.folder_flag }};;
+  }
+  dimension file_name {
+    label: 'File Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.file_name }};;
+  }
+  dimension file_extension {
+    label: 'File Extension'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.file_extension }};;
+  }
+  dimension revision {
+    label: 'Revision'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.revision }};;
+  }
+  dimension change_number {
+    label: 'Change Number'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.change_number }};;
+  }
+  dimension status {
+    label: 'Status'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.status }};;
+  }
+  dimension document_summary {
+    label: 'Document Summary'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.document_summary }};;
+  }
+  dimension document {
+    label: 'Document'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.document }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension document_node {
+    label: 'Document Node'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.document_node }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."document"'
+}

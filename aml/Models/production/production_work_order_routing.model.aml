@@ -1,0 +1,81 @@
+Model production_work_order_routing {
+  type: 'table'
+  label: 'Work Order Routing'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension work_order_id {
+    label: 'Work Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.work_order_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension operation_sequence {
+    label: 'Operation Sequence'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.operation_sequence }};;
+  }
+  dimension location_id {
+    label: 'Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension scheduled_start_date {
+    label: 'Scheduled Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.scheduled_start_date }};;
+  }
+  dimension scheduled_end_date {
+    label: 'Scheduled End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.scheduled_end_date }};;
+  }
+  dimension actual_start_date {
+    label: 'Actual Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.actual_start_date }};;
+  }
+  dimension actual_end_date {
+    label: 'Actual End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.actual_end_date }};;
+  }
+  dimension actual_resource_hrs {
+    label: 'Actual Resource Hrs'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.actual_resource_hrs }};;
+  }
+  dimension planned_cost {
+    label: 'Planned Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.planned_cost }};;
+  }
+  dimension actual_cost {
+    label: 'Actual Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.actual_cost }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."work_order_routing"'
+}

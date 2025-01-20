@@ -1,0 +1,159 @@
+Model production_v_product_model_catalog_description {
+  type: 'table'
+  label: 'V Product Model Catalog Description'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_model_id {
+    label: 'Product Model Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_model_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension summary {
+    label: 'Summary'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Summary }};;
+  }
+  dimension manufacturer {
+    label: 'Manufacturer'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.manufacturer }};;
+  }
+  dimension copyright {
+    label: 'Copyright'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.copyright }};;
+  }
+  dimension producturl {
+    label: 'Producturl'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.producturl }};;
+  }
+  dimension warrantyperiod {
+    label: 'Warrantyperiod'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.warrantyperiod }};;
+  }
+  dimension warrantydescription {
+    label: 'Warrantydescription'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.warrantydescription }};;
+  }
+  dimension noofyears {
+    label: 'Noofyears'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.noofyears }};;
+  }
+  dimension maintenancedescription {
+    label: 'Maintenancedescription'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.maintenancedescription }};;
+  }
+  dimension wheel {
+    label: 'Wheel'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.wheel }};;
+  }
+  dimension saddle {
+    label: 'Saddle'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.saddle }};;
+  }
+  dimension pedal {
+    label: 'Pedal'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.pedal }};;
+  }
+  dimension bikeframe {
+    label: 'Bikeframe'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.bikeframe }};;
+  }
+  dimension crankset {
+    label: 'Crankset'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.crankset }};;
+  }
+  dimension pictureangle {
+    label: 'Pictureangle'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.pictureangle }};;
+  }
+  dimension picturesize {
+    label: 'Picturesize'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.picturesize }};;
+  }
+  dimension product_photo_id {
+    label: 'Product Photo Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_photo_id }};;
+  }
+  dimension material {
+    label: 'Material'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.material }};;
+  }
+  dimension color {
+    label: 'Color'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.color }};;
+  }
+  dimension product_line {
+    label: 'Product Line'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_line }};;
+  }
+  dimension style {
+    label: 'Style'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.style }};;
+  }
+  dimension riderexperience {
+    label: 'Riderexperience'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.riderexperience }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."v_product_model_catalog_description"'
+}

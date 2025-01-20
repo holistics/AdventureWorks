@@ -1,0 +1,39 @@
+Model production_location {
+  type: 'table'
+  label: 'Location'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension location_id {
+    label: 'Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension cost_rate {
+    label: 'Cost Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.cost_rate }};;
+  }
+  dimension availability {
+    label: 'Availability'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.availability }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."location"'
+}

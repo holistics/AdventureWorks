@@ -1,0 +1,75 @@
+Model sales_special_offer {
+  type: 'table'
+  label: 'Special Offer'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension special_offer_id {
+    label: 'Special Offer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.special_offer_id }};;
+  }
+  dimension description {
+    label: 'Description'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.description }};;
+  }
+  dimension discount_pct {
+    label: 'Discount Pct'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.discount_pct }};;
+  }
+  dimension type {
+    label: 'Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.type }};;
+  }
+  dimension category {
+    label: 'Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.category }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension end_date {
+    label: 'End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_date }};;
+  }
+  dimension min_qty {
+    label: 'Min Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.min_qty }};;
+  }
+  dimension max_qty {
+    label: 'Max Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.max_qty }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."special_offer"'
+}

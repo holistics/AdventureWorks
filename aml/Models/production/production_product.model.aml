@@ -1,0 +1,167 @@
+Model production_product {
+  type: 'table'
+  label: 'Product'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension product_number {
+    label: 'Product Number'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_number }};;
+  }
+  dimension make_flag {
+    label: 'Make Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.make_flag }};;
+  }
+  dimension finished_goods_flag {
+    label: 'Finished Goods Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.finished_goods_flag }};;
+  }
+  dimension color {
+    label: 'Color'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.color }};;
+  }
+  dimension safety_stock_level {
+    label: 'Safety Stock Level'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.safety_stock_level }};;
+  }
+  dimension reorder_point {
+    label: 'Reorder Point'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.reorder_point }};;
+  }
+  dimension standard_cost {
+    label: 'Standard Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.standard_cost }};;
+  }
+  dimension list_price {
+    label: 'List Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.list_price }};;
+  }
+  dimension turnover_margin {
+    label: 'Turnover Margin'
+    type: 'number'
+    definition: @sql CASE
+  WHEN {{ #SOURCE.standard_cost }} <> 0 THEN ({{ #SOURCE.list_price }} - {{ #SOURCE.standard_cost }}) * 1.0 / {{ #SOURCE.standard_cost }}
+  ELSE 9999
+END;;
+  }
+  dimension size {
+    label: 'Size'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.size }};;
+  }
+  dimension size_unit_measure_code {
+    label: 'Size Unit Measure Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.size_unit_measure_code }};;
+  }
+  dimension weight_unit_measure_code {
+    label: 'Weight Unit Measure Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.weight_unit_measure_code }};;
+  }
+  dimension weight {
+    label: 'Weight'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.weight }};;
+  }
+  dimension days_to_manufacture {
+    label: 'Days To Manufacture'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.days_to_manufacture }};;
+  }
+  dimension product_line {
+    label: 'Product Line'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_line }};;
+  }
+  dimension class {
+    label: 'Class'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.class }};;
+  }
+  dimension style {
+    label: 'Style'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.style }};;
+  }
+  dimension product_subcategory_id {
+    label: 'Product Subcategory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_subcategory_id }};;
+  }
+  dimension product_model_id {
+    label: 'Product Model Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_model_id }};;
+  }
+  dimension sell_start_date {
+    label: 'Sell Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.sell_start_date }};;
+  }
+  dimension sell_end_date {
+    label: 'Sell End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.sell_end_date }};;
+  }
+  dimension discontinued_date {
+    label: 'Discontinued Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.discontinued_date }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product"'
+}

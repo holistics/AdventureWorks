@@ -1,0 +1,45 @@
+Model sales_credit_card {
+  type: 'table'
+  label: 'Credit Card'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension credit_card_id {
+    label: 'Credit Card Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_card_id }};;
+  }
+  dimension card_type {
+    label: 'Card Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.card_type }};;
+  }
+  dimension card_number {
+    label: 'Card Number'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.card_number }};;
+  }
+  dimension exp_month {
+    label: 'Exp Month'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.exp_month }};;
+  }
+  dimension exp_year {
+    label: 'Exp Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.exp_year }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."credit_card"'
+}

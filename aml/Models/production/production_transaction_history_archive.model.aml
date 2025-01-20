@@ -1,0 +1,63 @@
+Model production_transaction_history_archive {
+  type: 'table'
+  label: 'Transaction History Archive'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension transaction_id {
+    label: 'Transaction Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.transaction_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension reference_order_id {
+    label: 'Reference Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.reference_order_id }};;
+  }
+  dimension reference_order_line_id {
+    label: 'Reference Order Line Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.reference_order_line_id }};;
+  }
+  dimension transaction_date {
+    label: 'Transaction Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.transaction_date }};;
+  }
+  dimension transaction_type {
+    label: 'Transaction Type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.transaction_type }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension actual_cost {
+    label: 'Actual Cost'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.actual_cost }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."transaction_history_archive"'
+}

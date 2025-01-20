@@ -1,0 +1,62 @@
+Model production_product_inventory {
+  type: 'table'
+  label: 'Product Inventory'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension location_id {
+    label: 'Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension shelf {
+    label: 'Shelf'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.shelf }};;
+  }
+  dimension bin {
+    label: 'Bin'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bin }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension out_of_stock {
+    label: 'Out of Stock'
+    description: '1: Inventory is out-of-stock; 0: Inventory exceeds safety stock quantity'
+    type: 'number'
+    hidden: false
+    definition: @aql case(
+      when: production_product_inventory.quantity < production_product.safety_stock_level
+      , then: 1
+      , else: 0
+    ) ;;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_inventory"'
+}

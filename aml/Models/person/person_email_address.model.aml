@@ -1,0 +1,39 @@
+Model person_email_address {
+  type: 'table'
+  label: 'Email Address'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension email_address_id {
+    label: 'Email Address Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address_id }};;
+  }
+  dimension email_address {
+    label: 'Email Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."email_address"'
+}

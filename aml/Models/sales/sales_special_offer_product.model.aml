@@ -1,0 +1,38 @@
+Model sales_special_offer_product {
+  type: 'table'
+  label: 'Special Offer Product'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension special_offer_id {
+    label: 'Special Offer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.special_offer_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension special_offer_id_and_product_id {
+    label: "(Special Offer ID, Product ID)"
+    type: "text"
+    definition: @sql concat({{ special_offer_id }}, {{ product_id }});;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."special_offer_product"'
+}

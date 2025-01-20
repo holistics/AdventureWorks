@@ -1,0 +1,93 @@
+Model purchasing_purchase_order_detail {
+  type: 'table'
+  label: 'Purchase Order Detail'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension purchase_order_id {
+    label: 'Purchase Order Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_id }};;
+  }
+  dimension purchase_order_detail_id {
+    label: 'Purchase Order Detail Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchase_order_detail_id }};;
+  }
+  dimension due_date {
+    label: 'Due Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.due_date }};;
+  }
+  dimension on_time_delivery {
+    label: 'On Time Delivery'
+    description: '1: Delivery is on-time; 0: Delivery is due'
+    type: 'number',
+    hidden: false
+    definition: @aql case(
+      when: purchasing_purchase_order_header.ship_date <= purchasing_purchase_order_detail.due_date
+      , then: 1
+      , else: 0
+    ) ;;
+  }
+  dimension order_qty {
+    label: 'Order Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.order_qty }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension unit_price {
+    label: 'Unit Price'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_price }};;
+  }
+  dimension received_qty {
+    label: 'Received Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.received_qty }};;
+  }
+  dimension rejected_qty {
+    label: 'Rejected Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rejected_qty }};;
+  }
+  dimension rejected_rate_standalone {
+    label: 'Rejected Rate (standalone)'
+    type: 'number'
+    hidden: false
+    definition: @aql purchasing_purchase_order_detail.rejected_qty * 1.0 / nullif(purchasing_purchase_order_detail.received_qty, 0) ;;
+  }
+  measure rejected_rate {
+    label: 'Rejected Rate'
+    type: 'number'
+    hidden: false
+    definition: @aql 
+    (
+      count(purchasing_purchase_order_detail.purchase_order_id)
+      | where(purchasing_purchase_order_detail.rejected_qty > 0)
+    ) * 1.0 / (
+      count(purchasing_purchase_order_detail.purchase_order_id)
+      | where(purchasing_purchase_order_detail.rejected_qty == 0)
+    ) ;;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"purchasing"."purchase_order_detail"'
+}

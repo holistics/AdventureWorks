@@ -1,0 +1,75 @@
+Model human_resources_v_job_candidate_employment {
+  type: 'table'
+  label: 'V Job Candidate Employment'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension job_candidate_id {
+    label: 'Job Candidate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_candidate_id }};;
+  }
+  dimension emp_start_date {
+    label: 'Emp.start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.start_date }};;
+  }
+  dimension emp_end_date {
+    label: 'Emp.end Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.end_date }};;
+  }
+  dimension emp_org_name {
+    label: 'Emp.org Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.OrgName }};;
+  }
+  dimension emp_job_title {
+    label: 'Emp.job Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.job_title }};;
+  }
+  dimension emp_responsibility {
+    label: 'Emp.responsibility'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.Responsibility }};;
+  }
+  dimension emp_function_category {
+    label: 'Emp.function Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.FunctionCategory }};;
+  }
+  dimension emp_industry_category {
+    label: 'Emp.industry Category'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.IndustryCategory }};;
+  }
+  dimension emp_loc_country_region {
+    label: 'Emp.loc.country Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.Loc.country_region }};;
+  }
+  dimension emp_loc_state {
+    label: 'Emp.loc.state'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.Loc.State }};;
+  }
+  dimension emp_loc_city {
+    label: 'Emp.loc.city'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Emp.Loc.city }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."v_job_candidate_employment"'
+}

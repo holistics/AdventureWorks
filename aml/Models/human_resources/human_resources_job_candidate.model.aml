@@ -1,0 +1,33 @@
+Model human_resources_job_candidate {
+  type: 'table'
+  label: 'Job Candidate'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension job_candidate_id {
+    label: 'Job Candidate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_candidate_id }};;
+  }
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension resume {
+    label: 'Resume'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.resume }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."job_candidate"'
+}

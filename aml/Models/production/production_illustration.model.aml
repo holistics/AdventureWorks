@@ -1,0 +1,27 @@
+Model production_illustration {
+  type: 'table'
+  label: 'Illustration'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension illustration_id {
+    label: 'Illustration Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.illustration_id }};;
+  }
+  dimension diagram {
+    label: 'Diagram'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.diagram }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."illustration"'
+}

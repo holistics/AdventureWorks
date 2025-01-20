@@ -1,0 +1,75 @@
+Model production_v_product_model_instruction {
+  type: 'table'
+  label: 'V Product Model Instruction'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_model_id {
+    label: 'Product Model Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_model_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension instructions {
+    label: 'Instructions'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.instructions }};;
+  }
+  dimension location_id {
+    label: 'Location Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.location_id }};;
+  }
+  dimension setup_hours {
+    label: 'Setup Hours'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.setup_hours }};;
+  }
+  dimension machine_hours {
+    label: 'Machine Hours'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.machine_hours }};;
+  }
+  dimension labor_hours {
+    label: 'Labor Hours'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.labor_hours }};;
+  }
+  dimension lot_size {
+    label: 'Lot Size'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.lot_size }};;
+  }
+  dimension step {
+    label: 'Step'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Step }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."v_product_model_instruction"'
+}

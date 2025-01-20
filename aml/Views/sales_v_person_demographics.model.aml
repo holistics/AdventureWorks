@@ -1,0 +1,87 @@
+Model sales_v_person_demographics {
+  type: 'table'
+  label: 'V Person Demographics'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension totalpurchaseytd {
+    label: 'Totalpurchaseytd'
+    type: 'number'
+    hidden: false
+    definition: @sql ({{ #SOURCE.totalpurchaseytd }})::numeric;;
+  }
+  dimension datefirstpurchase {
+    label: 'Datefirstpurchase'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.datefirstpurchase }};;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension martial_status {
+    label: 'Martial Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.martial_status }};;
+  }
+  dimension yearlyincome {
+    label: 'Yearlyincome'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.yearlyincome }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension totalchildren {
+    label: 'Totalchildren'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.totalchildren }};;
+  }
+  dimension numberchildrenathome {
+    label: 'Numberchildrenathome'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.numberchildrenathome }};;
+  }
+  dimension education {
+    label: 'Education'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.education }};;
+  }
+  dimension occupation {
+    label: 'Occupation'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.occupation }};;
+  }
+  dimension homeownerflag {
+    label: 'Homeownerflag'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.homeownerflag }};;
+  }
+  dimension numbercarsowned {
+    label: 'Numbercarsowned'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.numbercarsowned }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."v_person_demographics"'
+}

@@ -1,0 +1,45 @@
+Model sales_shopping_cart_item {
+  type: 'table'
+  label: 'Shopping Cart Item'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension shopping_cart_item_id {
+    label: 'Shopping Cart Item Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.shopping_cart_item_id }};;
+  }
+  dimension shipping_card_id {
+    label: 'Shipping Card Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.shipping_card_id }};;
+  }
+  dimension quantity {
+    label: 'Quantity'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quantity }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension date_created {
+    label: 'Date Created'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_created }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."shopping_cart_item"'
+}

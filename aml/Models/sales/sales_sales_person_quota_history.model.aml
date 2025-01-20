@@ -1,0 +1,39 @@
+Model sales_sales_person_quota_history {
+  type: 'table'
+  label: 'Sales Person Quota History'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension quota_date {
+    label: 'Quota Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.quota_date }};;
+  }
+  dimension sales_quota {
+    label: 'Sales Quota'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_quota }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."sales_person_quota_history"'
+}

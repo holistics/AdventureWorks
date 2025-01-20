@@ -1,0 +1,45 @@
+Model production_product_photo {
+  type: 'table'
+  label: 'Product Photo'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_photo_id {
+    label: 'Product Photo Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_photo_id }};;
+  }
+  dimension thumbnail_photo {
+    label: 'Thumbnail Photo'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.thumbnail_photo }};;
+  }
+  dimension thumbnail_photo_file_name {
+    label: 'Thumbnail Photo File Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.thumbnail_photo_file_name }};;
+  }
+  dimension large_photo {
+    label: 'Large Photo'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.large_photo }};;
+  }
+  dimension large_photo_file_name {
+    label: 'Large Photo File Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.large_photo_file_name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_photo"'
+}

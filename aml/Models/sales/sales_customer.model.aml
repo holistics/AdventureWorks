@@ -1,0 +1,45 @@
+Model sales_customer {
+  type: 'table'
+  label: 'Customer'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension customer_id {
+    label: 'Customer Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.customer_id }};;
+  }
+  dimension person_id {
+    label: 'Person Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.person_id }};;
+  }
+  dimension store_id {
+    label: 'Store Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.store_id }};;
+  }
+  dimension territory_id {
+    label: 'Territory Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.territory_id }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."customer"'
+}

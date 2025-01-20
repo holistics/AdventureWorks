@@ -1,0 +1,51 @@
+Model sales_currency_rate {
+  type: 'table'
+  label: 'Currency Rate'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension currency_rate_id {
+    label: 'Currency Rate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency_rate_id }};;
+  }
+  dimension currency_rate_date {
+    label: 'Currency Rate Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.currency_rate_date }};;
+  }
+  dimension from_currency_code {
+    label: 'From Currency Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.from_currency_code }};;
+  }
+  dimension to_currency_code {
+    label: 'To Currency Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.to_currency_code }};;
+  }
+  dimension average_rate {
+    label: 'Average Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.average_rate }};;
+  }
+  dimension end_of_date_rate {
+    label: 'End Of Date Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_of_date_rate }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."currency_rate"'
+}

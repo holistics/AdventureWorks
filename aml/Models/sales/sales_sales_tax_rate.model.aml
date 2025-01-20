@@ -1,0 +1,62 @@
+Model sales_sales_tax_rate {
+  type: 'table'
+  label: 'Sales Tax Rate'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension sales_tax_rate_id {
+    label: 'Sales Tax Rate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_tax_rate_id }};;
+  }
+  dimension state_province_id {
+    label: 'State Province Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.state_province_id }};;
+  }
+  dimension tax_type {
+    label: 'Tax Type'
+    type: 'text'
+    hidden: false
+    definition: @sql CASE
+  WHEN {{ #SOURCE.tax_type }} = 1 THEN 'Retail'
+  WHEN {{ #SOURCE.tax_type }} = 2 THEN 'Wholesale'
+  WHEN {{ #SOURCE.tax_type }} = 3 THEN 'All sales'
+  ELSE 'INVALID!'
+END;;
+  }
+  dimension tax_type_raw {
+    label: 'Tax Type (raw)'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_type }};;
+  }
+  dimension tax_rate {
+    label: 'Tax Rate'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.tax_rate }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."sales_tax_rate"'
+}

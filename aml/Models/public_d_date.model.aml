@@ -1,0 +1,183 @@
+Model public_d_date {
+  type: 'table'
+  label: 'D Date'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension date_dim_id {
+    label: 'Date Dim Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_dim_id }};;
+  }
+  dimension date_actual {
+    label: 'Date Actual'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.date_actual }};;
+  }
+  dimension epoch {
+    label: 'Epoch'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.epoch }};;
+  }
+  dimension day_suffix {
+    label: 'Day Suffix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_suffix }};;
+  }
+  dimension day_name {
+    label: 'Day Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_name }};;
+  }
+  dimension day_of_week {
+    label: 'Day Of Week'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_week }};;
+  }
+  dimension day_of_month {
+    label: 'Day Of Month'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_month }};;
+  }
+  dimension day_of_quarter {
+    label: 'Day Of Quarter'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_quarter }};;
+  }
+  dimension day_of_year {
+    label: 'Day Of Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.day_of_year }};;
+  }
+  dimension week_of_month {
+    label: 'Week Of Month'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.week_of_month }};;
+  }
+  dimension week_of_year {
+    label: 'Week Of Year'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.week_of_year }};;
+  }
+  dimension week_of_year_iso {
+    label: 'Week Of Year Iso'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.week_of_year_iso }};;
+  }
+  dimension month_actual {
+    label: 'Month Actual'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_actual }};;
+  }
+  dimension month_name {
+    label: 'Month Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_name }};;
+  }
+  dimension month_name_abbreviated {
+    label: 'Month Name Abbreviated'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.month_name_abbreviated }};;
+  }
+  dimension quarter_actual {
+    label: 'Quarter Actual'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.quarter_actual }};;
+  }
+  dimension quarter_name {
+    label: 'Quarter Name'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.quarter_name }};;
+  }
+  dimension year_actual {
+    label: 'Year Actual'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.year_actual }};;
+  }
+  dimension first_day_of_week {
+    label: 'First Day Of Week'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_day_of_week }};;
+  }
+  dimension last_day_of_week {
+    label: 'Last Day Of Week'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_day_of_week }};;
+  }
+  dimension first_day_of_month {
+    label: 'First Day Of Month'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_day_of_month }};;
+  }
+  dimension last_day_of_month {
+    label: 'Last Day Of Month'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_day_of_month }};;
+  }
+  dimension first_day_of_quarter {
+    label: 'First Day Of Quarter'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_day_of_quarter }};;
+  }
+  dimension last_day_of_quarter {
+    label: 'Last Day Of Quarter'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_day_of_quarter }};;
+  }
+  dimension first_day_of_year {
+    label: 'First Day Of Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_day_of_year }};;
+  }
+  dimension last_day_of_year {
+    label: 'Last Day Of Year'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_day_of_year }};;
+  }
+  dimension mmyyyy {
+    label: 'Mmyyyy'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.mmyyyy }};;
+  }
+  dimension mmddyyyy {
+    label: 'Mmddyyyy'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.mmddyyyy }};;
+  }
+  dimension weekend_indr {
+    label: 'Weekend Indr'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.weekend_indr }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"public"."d_date"'
+}

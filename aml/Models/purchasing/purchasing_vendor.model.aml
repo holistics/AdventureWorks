@@ -1,0 +1,57 @@
+Model purchasing_vendor {
+  type: 'table'
+  label: 'Vendor'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension account_number {
+    label: 'Account Number'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.account_number }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension credit_rating {
+    label: 'Credit Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.credit_rating }};;
+  }
+  dimension preferred_vendor_status {
+    label: 'Preferred Vendor Status'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.preferred_vendor_status }};;
+  }
+  dimension active_flag {
+    label: 'Active Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.active_flag }};;
+  }
+  dimension purchasing_web_service_url {
+    label: 'Purchasing Web Service Url'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.purchasing_web_service_url }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"purchasing"."vendor"'
+}

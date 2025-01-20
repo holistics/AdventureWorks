@@ -1,0 +1,64 @@
+Model human_resources_employee_department_history {
+  type: 'table'
+  label: 'Employee Department History'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension department_id {
+    label: 'Department Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.department_id }};;
+  }
+  dimension shift_id {
+    label: 'Shift Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.shift_id }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension end_date {
+    label: 'End Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_date }};;
+  }
+  dimension departed {
+    label: 'Departed'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql CASE
+    WHEN {{ #SOURCE.end_date }} IS NOT NULL THEN true
+    ELSE false
+    END ;;
+  }
+  dimension tenure_month {
+    label: 'Tenure (month)'
+    type: 'number'
+    hidden: false
+    definition: @aql date_diff(
+      'month',
+      human_resources_employee_department_history.start_date,
+      coalesce(human_resources_employee_department_history.end_date, @2014-06)
+    );;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."employee_department_history"'
+}

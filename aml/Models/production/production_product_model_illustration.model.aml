@@ -1,0 +1,27 @@
+Model production_product_model_illustration {
+  type: 'table'
+  label: 'Product Model Illustration'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_model_id {
+    label: 'Product Model Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_model_id }};;
+  }
+  dimension illustration_id {
+    label: 'Illustration Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.illustration_id }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_model_illustration"'
+}

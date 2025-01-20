@@ -1,0 +1,27 @@
+Model person_contact_type {
+  type: 'table'
+  label: 'Contact Type'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension contact_type_id {
+    label: 'Contact Type Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.contact_type_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."contact_type"'
+}

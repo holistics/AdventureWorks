@@ -1,0 +1,109 @@
+Model human_resources_employee {
+  type: 'table'
+  label: 'Employee'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension national_id_number {
+    label: 'National Id Number'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.national_id_number }};;
+  }
+  dimension login_id {
+    label: 'Login Id'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.login_id }};;
+  }
+  dimension job_title {
+    label: 'Job Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_title }};;
+  }
+  dimension birth_date {
+    label: 'Birth Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.birth_date }};;
+  }
+  dimension martial_status {
+    label: 'Martial Status'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.martial_status }};;
+  }
+  dimension gender {
+    label: 'Gender'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.gender }};;
+  }
+  dimension hire_date {
+    label: 'Hire Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.hire_date }};;
+  }
+  dimension years_experience {
+    label: 'Years of Experience'
+    type: 'number'
+    hidden: false
+    definition: @aql case(
+      when: human_resources_employee.current_flag
+      , then: date_diff('year', human_resources_employee.hire_date, @2015)
+      , else: 0
+    )  ;;
+  }
+  dimension salaried_flag {
+    label: 'Salaried Flag'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.salaried_flag }};;
+  }
+  dimension vacation_hours {
+    label: 'Vacation Hours'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.vacation_hours }};;
+  }
+  dimension sick_leave_hours {
+    label: 'Sick Leave Hours'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sick_leave_hours }};;
+  }
+  dimension current_flag {
+    label: 'Current Flag'
+    type: 'truefalse'
+    hidden: false
+    definition: @sql {{ #SOURCE.current_flag }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension organization_node {
+    label: 'Organization Node'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.organization_node }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."employee"'
+}

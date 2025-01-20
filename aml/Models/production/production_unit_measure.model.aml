@@ -1,0 +1,27 @@
+Model production_unit_measure {
+  type: 'table'
+  label: 'Unit Measure'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension unit_measure_code {
+    label: 'Unit Measure Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_measure_code }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."unit_measure"'
+}

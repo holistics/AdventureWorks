@@ -1,0 +1,4550 @@
+Dashboard adventure_works_big {
+  title: 'Adventure Works (big)'
+  block country_code: FilterBlock {
+    label: 'Country Code'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('person_country_region', 'country_region_code')
+    }
+    default {
+      operator: 'is_not'
+      value: 'AD'
+    }
+  }
+  block location_id: FilterBlock {
+    label: 'Location ID'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_location', 'location_id')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block special_offer: FilterBlock {
+    label: 'Special Offer'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('sales_special_offer', 'description')
+    }
+    default {
+      operator: 'is'
+      value: [
+        'Half-Price Pedal Sale',
+        'LL Road Frame Sale',
+        'Mountain-100 Clearance Sale',
+        'Mountain-500 Silver Clearance Sale',
+        'Mountain Tire Sale',
+        'No Discount',
+        'Sport Helmet Discount-2002',
+        'Road-650 Overstock',
+        'Sport Helmet Discount-2003',
+        'Touring-1000 Promotion',
+        'Touring-3000 Promotion',
+        'Volume Discount 11 to 14',
+        'Volume Discount 15 to 24',
+        'Volume Discount 25 to 40',
+        'Volume Discount 41 to 60',
+        'Volume Discount over 60'
+      ]
+    }
+  }
+  block inventory_shelf: FilterBlock {
+    label: 'Inventory Shelf'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_product_inventory', 'shelf')
+    }
+    default {
+      operator: 'is'
+      value: [
+        'A',
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H',
+        'J',
+        'K',
+        'L',
+        'M',
+        'N',
+        'N/A',
+        'R',
+        'S',
+        'T',
+        'U',
+        'V',
+        'W',
+        'Y'
+      ]
+    }
+  }
+  block sales_unit_price_final: FilterBlock {
+    label: 'Sales Unit Price (final)'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('sales_sales_order_detail', 'unit_price_final')
+    }
+    default {
+      operator: 'greater_than'
+      value: '5'
+    }
+  }
+  block culture_id: FilterBlock {
+    label: 'Culture ID'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_culture', 'culture_id')
+    }
+    default {
+      operator: 'is'
+      value: [
+        'ar    ',
+        '      ',
+        'en    ',
+        'es    ',
+        'fr    ',
+        'he    ',
+        'th    ',
+        'zh-cht'
+      ]
+    }
+  }
+  block product_weight: FilterBlock {
+    label: 'Product Weight'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_product', 'weight')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block product_size: FilterBlock {
+    label: 'Product Size'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_product', 'size')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block sales_reason_id: FilterBlock {
+    label: 'Sales Reason ID'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('sales_sales_reason', 'sales_reason_id')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block department_id: FilterBlock {
+    label: 'Department ID'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('human_resources_department', 'department_id')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block shift_id: FilterBlock {
+    label: 'Shift ID'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('human_resources_shift', 'shift_id')
+    }
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block safety_stock_level: FilterBlock {
+    label: 'Safety Stock Level'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_product', 'safety_stock_level')
+    }
+    default {
+      operator: 'greater_than'
+      value: '5'
+    }
+  }
+  block manual_text: FilterBlock {
+    label: '[Manual] Text'
+    type: 'text'
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block manual_number: FilterBlock {
+    label: '[Manual] Number'
+    type: 'number'
+    default {
+      operator: 'not_null'
+      value: []
+    }
+  }
+  block order_date: PopBlock {
+    label: 'Order Date'
+    default {
+      type: 'relative'
+      duration: 1
+      granularity: 'year'
+      show_growth_rate: true
+    }
+  }
+  block date_drill: DateDrillBlock {
+    label: 'Date Drill'
+  }
+  block currency_code: FilterBlock {
+    label: 'Currency Code'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('sales_currency', 'currency_code')
+    }
+    default {
+      operator: 'is_not'
+      value: [
+        'ARS',
+        'AOA',
+        'BRL',
+        'CZK'
+      ]
+    }
+  }
+  block sales_order_date: FilterBlock {
+    label: 'Sales Order Date'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('sales_sales_order_header', 'order_date')
+    }
+    default {
+      operator: 'after'
+      value: '2010-01-01'
+    }
+  }
+  block days_to_manufacture: FilterBlock {
+    label: 'Days to Manufacture'
+    type: 'field'
+    source: FieldFilterSource {
+      dataset: adventure_works
+      field: ref('production_product', 'days_to_manufacture')
+    }
+    default {
+      operator: 'greater_than'
+      value: '-1'
+    }
+  }
+  block v1: VizBlock {
+    label: 'COUNT of Sales Order by Country Name'
+    viz: ColumnChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        ref: ref('person_country_region', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sales_sales_order_detail', 'sales_order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#8DD6C3'
+          }
+        }
+      }
+    }
+  }
+  block v2: VizBlock {
+    label: 'COUNT of Special Offer by Order Date'
+    viz: LineChart {
+      dataset: adventure_works
+      filter {
+        field: ref('purchasing_purchase_order_header', 'order_date')
+        operator: 'not_null'
+        value: []
+      }
+      x_axis: VizFieldFull {
+        ref: ref('purchasing_purchase_order_header', 'order_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sales_special_offer_product', 'special_offer_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#AF7DED'
+          }
+        }
+      }
+    }
+  }
+  block v3: VizBlock {
+    label: 'COUNT of Sales Orders by Shipping Method'
+    viz: PieChart {
+      dataset: adventure_works
+      legend: VizFieldFull {
+        ref: ref('purchasing_ship_method', 'name')
+      }
+      series {
+        field {
+          ref: ref('sales_sales_order_detail', 'sales_order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          point {
+            value: 'CARGO TRANSPORT 5'
+            color: '#07326C'
+          }
+          point {
+            value: 'XRQ - TRUCK GROUND'
+            color: '#E27712'
+          }
+        }
+      }
+      settings {
+        sort: 'desc'
+      }
+    }
+  }
+  block v4: VizBlock {
+    label: 'Product Measurements'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'product_number')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'size')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'size_unit_measure_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'weight')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'weight_unit_measure_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'list_price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 4
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v5: VizBlock {
+    label: 'COUNT of Sales Orders by Currency'
+    viz: PieChart {
+      dataset: adventure_works
+      legend: VizFieldFull {
+        ref: ref('sales_currency', 'name')
+      }
+      series {
+        field {
+          ref: ref('sales_sales_order_header', 'sales_order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+        settings {
+          color: '#F2B602'
+          point {
+            value: ''
+            color: '#F1BB88'
+          }
+          point {
+            value: 'US Dollar'
+            color: '#18A59E'
+          }
+        }
+      }
+      settings {
+        sort: 'desc'
+      }
+    }
+  }
+  block v6: VizBlock {
+    label: 'SUM of Tax Rate by Country and Tax Type'
+    viz: ColumnChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        ref: ref('person_country_region', 'name')
+      }
+      legend: VizFieldFull {
+        ref: ref('sales_sales_tax_rate', 'tax_type')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sales_sales_tax_rate', 'tax_rate')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: '1'
+              color: '#18A59E'
+            }
+            point {
+              value: '2'
+              color: '#07326C'
+            }
+            point {
+              value: '3'
+              color: '#A50E43'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v7: VizBlock {
+    label: 'Standard Price & Avg. Lead Time Correlation'
+    viz: ScatterChart {
+      dataset: adventure_works
+      x_col: VizFieldFull {
+        ref: ref('purchasing_product_vendor', 'standard_price')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_col: VizFieldFull {
+        ref: ref('purchasing_product_vendor', 'average_lead_time')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      group_col: VizFieldFull {
+        ref: ref('purchasing_product_vendor', 'unit_measure_code')
+        format {
+          type: 'text'
+        }
+      }
+      label_col: VizFieldFull {
+        ref: ref('purchasing_vendor', 'name')
+      }
+    }
+  }
+  block v8: VizBlock {
+    label: 'COUNT of Products by Culture'
+    viz: PyramidChart {
+      dataset: adventure_works
+      legend: VizFieldFull {
+        ref: ref('production_culture', 'name')
+      }
+      series {
+        field {
+          ref: ref('production_product', 'product_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        sort: 'desc'
+      }
+    }
+  }
+  block v9: VizBlock {
+    label: 'Product Order & Scrapped Qty.'
+    viz: PivotTable {
+      dataset: adventure_works
+      rows: [
+        VizFieldFull {
+          ref: ref('production_product', 'name')
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          ref: ref('production_culture', 'name')
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('production_work_order', 'order_qty')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_work_order', 'scrapped_qty')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+      }
+    }
+  }
+  block v10: VizBlock {
+    label: 'AVG Salary Rate by Department & Gender'
+    viz: LineChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        ref: ref('human_resources_department', 'name')
+      }
+      legend: VizFieldFull {
+        ref: ref('human_resources_employee', 'gender')
+        format {
+          type: 'text'
+        }
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('human_resources_employee_pay_history', 'rate')
+            aggregation: 'avg'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            point {
+              value: 'F'
+              color: '#FCB8B8'
+            }
+            point {
+              value: 'M'
+              color: '#92AEEA'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v11: VizBlock {
+    label: 'Sales performance trend across Seasonal Patterns & Territory'
+    viz: LineChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        ref: ref('sales_sales_order_header', 'order_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('sales_sales_territory', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sales_sales_order_header', 'sales_order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          field {
+            label: 'Sales Order Trendline'
+            ref: ref('sales_sales_order_header', 'sales_order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+            analytic: RegressionLine {
+              type: 'linear'
+            }
+          }
+          settings {
+            line_style: 'dashed'
+            point {
+              value: 'Canada'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'France'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Central'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Germany'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Australia'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Northeast'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Northwest'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Southeast'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Southwest'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'United Kingdom'
+              line_style: 'dashed'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v12: VizBlock {
+    label: 'AVG Tenure by Department'
+    viz: PyramidChart {
+      dataset: adventure_works_employee
+      legend: VizFieldFull {
+        ref: ref('human_resources_department', 'name')
+      }
+      series {
+        field {
+          ref: ref('human_resources_employee_department_history', 'tenure_month')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        show_data_label: true
+        sort: 'desc'
+      }
+    }
+  }
+  block v13: VizBlock {
+    label: 'Career Path progression'
+    viz: DataTable {
+      dataset: adventure_works_employee
+      fields: [
+        VizFieldFull {
+          ref: ref('person_person', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('human_resources_department', 'name')
+        },
+        VizFieldFull {
+          ref: ref('human_resources_employee_pay_history', 'rate')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('human_resources_employee_pay_history', 'rate_change_date')
+          transformation: 'datetrunc day'
+          format {
+            type: 'date'
+            pattern: 'LLL dd, yyyy'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v14: VizBlock {
+    label: 'Scrapped Rate by Product & Reason'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          label: 'Product Name'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          label: 'Scrapped Reason'
+          ref: ref('production_scrap_reason', 'name')
+        },
+        VizFieldFull {
+          label: 'Scrapped Rate'
+          ref: 'scrapped_rate_all'
+          format {
+            type: 'number'
+            pattern: '#,###0.0000%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          }
+        ]
+      }
+    }
+  }
+  block v15: VizBlock {
+    label: 'Work Order by Date & Location'
+    viz: LineChart {
+      dataset: adventure_works
+      filter {
+        field: ref('production_work_order', 'scrap_reason_id')
+        operator: 'not_null'
+        value: []
+      }
+      x_axis: VizFieldFull {
+        ref: ref('production_work_order', 'start_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('production_location', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('production_work_order', 'work_order_id')
+            aggregation: 'count'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v16: VizBlock {
+    label: 'Sales Store Territory Alignment'
+    viz: CombinationChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        ref: ref('sales_sales_territory', 'name')
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field {
+            label: 'No. Stores'
+            ref: ref('sales_store', 'business_entity_id')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+          settings {
+            color: '#AF7DED'
+            line_style: 'dashed'
+            line_interpolation: 'step_before'
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'column'
+          field {
+            label: 'Shipping Cost'
+            ref: ref('sales_sales_order_header', 'freight')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###'
+            }
+          }
+          settings {
+            color: '#E27712'
+          }
+        }
+        series {
+          mark_type: 'column'
+          field {
+            label: 'Revenue'
+            ref: ref('sales_sales_order_detail', 'total_price')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###'
+            }
+          }
+          settings {
+            color: '#18A59E'
+          }
+        }
+      }
+    }
+  }
+  block v17: VizBlock {
+    label: 'Rejected Rate by Vendor'
+    viz: BarChart {
+      dataset: adventure_works_purchasing
+      filter {
+        field: ref('purchasing_purchase_order_detail', 'rejected_rate')
+        operator: 'greater_than'
+        value: '0'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('purchasing_vendor', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('purchasing_purchase_order_detail', 'rejected_rate')
+            format {
+              type: 'number'
+              pattern: '#,###0.00%'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+        }
+      }
+      settings {
+        sort {
+          field_index: 0
+          direction: 'asc'
+          type: 'series'
+        }
+      }
+    }
+  }
+  block v18: VizBlock {
+    label: 'AVG Lead Time by Product and Vendor'
+    viz: DataTable {
+      dataset: adventure_works_purchasing
+      fields: [
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          label: 'Vendor'
+          ref: ref('purchasing_vendor', 'name')
+        },
+        VizFieldFull {
+          label: 'Avg. Lead Time'
+          ref: ref('purchasing_product_vendor', 'average_lead_time')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v19: VizBlock {
+    label: 'Vendor Credit Rating & Rejected Rate Correlation'
+    viz: RadarChart {
+      dataset: adventure_works_purchasing
+      x_axis: VizFieldFull {
+        ref: ref('purchasing_vendor', 'credit_rating')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_axis {
+        field: VizFieldFull {
+          ref: ref('purchasing_purchase_order_detail', 'rejected_rate')
+          format {
+            type: 'number'
+            pattern: '#,###0.00%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      }
+    }
+  }
+  block v20: VizBlock {
+    label: 'AVG Order Frequency'
+    viz: MetricKpi {
+      dataset: adventure_works
+      calculation order_date_frequency_days {
+        label: 'Order Date Frequency (days)'
+        formula: @aql date_diff(
+  'day',
+  sales_sales_order_header.order_date,
+  sales_sales_order_header.order_date_next
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: sales_sales_order_header
+      }
+      calculation order_date_cycle_month {
+        label: 'Order Date Cycle (month)'
+        formula: @aql date_diff(
+  'month',
+  sales_sales_order_header.order_date,
+  sales_sales_order_header.order_date_next
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation work_order_completion_time_month {
+        label: 'Work Order Complettion Time (month)'
+        formula: @aql date_diff(
+  'month',
+  (production_work_order.start_date | month()),
+  (production_work_order.end_date | month())
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('sales_sales_order_header', 'order_date_next')
+        operator: 'not_null'
+        value: []
+      }
+      value: VizFieldFull {
+        ref: ref('sales_sales_order_header', 'order_date_frequency_days')
+        aggregation: 'avg'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+  }
+  block v21: VizBlock {
+    label: 'Work Order Completition Time by Start Date & Subcategory'
+    viz: LineChart {
+      dataset: adventure_works
+      calculation completition_time_days {
+        label: 'Completition Time (days)'
+        formula: @aql date_diff(
+  'day',
+  production_work_order.start_date,
+  production_work_order.end_date
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: production_work_order
+      }
+      x_axis: VizFieldFull {
+        ref: ref('production_work_order', 'start_date')
+        transformation: 'datetrunc month'
+        format {
+          type: 'date'
+          pattern: 'LLL yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('production_product_subcategory', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('production_work_order', 'completition_time_days')
+            aggregation: 'avg'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v22: VizBlock {
+    label: 'AVG Order Frequency by Customer'
+    viz: DataTable {
+      dataset: adventure_works_customers
+      calculation order_date_frequency_days {
+        label: 'Order Date Frequency (days)'
+        formula: @aql date_diff(
+  'day',
+  sales_sales_order_header.order_date,
+  sales_sales_order_header.order_date_next
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: sales_sales_order_header
+      }
+      calculation num_orders_buffered {
+        label: 'No. Orders (buffered)'
+        formula: @aql count(sales_sales_order_header.sales_order_id) + 1;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('person_person', 'full_name')
+        operator: 'not_null'
+        value: []
+      }
+      filter {
+        field: ref('sales_sales_order_header', 'order_date_next')
+        operator: 'not_null'
+        value: []
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('person_person', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_email_address', 'email_address')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'order_date_frequency_days')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'num_orders_buffered'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v23: VizBlock {
+    label: 'AVG Work Order Completion Time'
+    viz: MetricKpi {
+      dataset: adventure_works
+      calculation work_order_completion_days {
+        label: 'Work Order Completion (days)'
+        formula: @aql date_diff(
+  'day',
+  production_work_order.start_date,
+  production_work_order.end_date
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: production_work_order
+      }
+      value: VizFieldFull {
+        ref: ref('production_work_order', 'work_order_completion_days')
+        aggregation: 'avg'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+    }
+  }
+  block v24: VizBlock {
+    label: 'Work Order Completion Time by Product'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation work_order_completion_days {
+        label: 'Work Order Completion (days)'
+        formula: @aql date_diff(
+  'day',
+  production_work_order.start_date,
+  production_work_order.end_date
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: production_work_order
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_work_order', 'work_order_completion_days')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_work_order', 'work_order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 1
+            direction: 'desc'
+          }
+        ]
+      }
+    }
+  }
+  block v25: VizBlock {
+    label: 'Inventory Turnover by Product & Category'
+    viz: ScatterChart {
+      dataset: adventure_works
+      calculation inventory_turnover {
+        label: 'Inventory Turnover'
+        formula: @aql sum(production_transaction_history.total_cost) * 1.0 / average(production_product_inventory.quantity);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('production_product_inventory', 'quantity')
+        operator: 'is_not'
+        value: '0'
+      }
+      x_col: VizFieldFull {
+        ref: ref('production_transaction_history', 'total_cost')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_col: VizFieldFull {
+        ref: 'inventory_turnover'
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      group_col: VizFieldFull {
+        ref: ref('production_product_category', 'name')
+      }
+      label_col: VizFieldFull {
+        ref: ref('production_product', 'name')
+      }
+    }
+  }
+  block v26: VizBlock {
+    label: 'Product Price Lifecycle'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation turnover_margin_breakdown {
+        label: 'Turnover Margin Breakdown'
+        formula: @aql (production_product_list_price_history.list_price - production_product_cost_history.standard_cost) * 1.0 / production_product_cost_history.standard_cost;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_product_cost_history', 'standard_cost')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_list_price_history', 'list_price')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_list_price_history', 'start_date')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_list_price_history', 'end_date')
+          format {
+            type: 'datetime'
+          }
+        },
+        VizFieldFull {
+          ref: 'turnover_margin_breakdown'
+          format {
+            type: 'number'
+            pattern: '#,###0.00%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 3
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 4
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v27: VizBlock {
+    label: 'Size/Weight - Cost correlation by Product & Territory'
+    viz: PivotTable {
+      dataset: adventure_works_product_sales
+      filter {
+        field: ref('production_product', 'size')
+        operator: 'not_null'
+        value: []
+      }
+      rows: [
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'size')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Unit'
+          ref: ref('production_product', 'size_unit_measure_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'weight')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Unit'
+          ref: ref('production_product', 'weight_unit_measure_code')
+          format {
+            type: 'text'
+          }
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          label: 'Territory'
+          ref: ref('sales_sales_territory', 'name')
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'freight')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+        frozen_columns: 1
+      }
+    }
+  }
+  block v29: VizBlock {
+    label: 'Subcategory Growth'
+    viz: LineChart {
+      dataset: adventure_works_product_sales
+      calculation sum_sales_order_details_total_price_prev_year {
+        label: 'Sum of Total Price (prev. 1y)'
+        formula: @aql previous(
+  sum(sales_sales_order_detail.total_price),
+  order: sales_sales_order_header.order_date | year()
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('sales_sales_order_header', 'order_date')
+        transformation: 'datetrunc year'
+        format {
+          type: 'date'
+          pattern: 'yyyy'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('production_product_subcategory', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: ref('sales_sales_order_detail', 'total_price')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+        }
+      }
+      settings {
+        pop {
+          field: ref('sales_sales_order_header', 'order_date')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+      }
+    }
+  }
+  block v30: VizBlock {
+    label: 'Order Processing Time'
+    viz: DataTable {
+      dataset: adventure_works_product_sales
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_sales_territory', 'name')
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'processing_time_days')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v31: VizBlock {
+    label: 'Sales Reason Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_sales_reason', 'name')
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'total_due')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'sales_order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v32: VizBlock {
+    label: 'Currency Impact Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          label: 'From'
+          ref: ref('sales_currency_rate', 'from_currency_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'To'
+          ref: ref('sales_currency_rate', 'to_currency_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Avg. Rate'
+          ref: ref('sales_currency_rate', 'average_rate')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '#,###0.0000'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'total_due')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v33: VizBlock {
+    label: 'Experience vs Quota Achievement'
+    viz: BubbleChart {
+      dataset: adventure_works_employee
+      x_col: VizFieldFull {
+        ref: ref('sales_sales_person', 'sales_quota')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_col: VizFieldFull {
+        ref: ref('sales_sales_person', 'sales_ytd')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      z_col: VizFieldFull {
+        ref: ref('human_resources_employee', 'years_experience')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      group_col: VizFieldFull {
+        ref: ref('person_country_region', 'name')
+      }
+      label_col: VizFieldFull {
+        ref: ref('person_person', 'full_name')
+        format {
+          type: 'text'
+        }
+      }
+    }
+  }
+  block v34: VizBlock {
+    label: 'Promotion Impact'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_special_offer', 'description')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'No. Sales Orders'
+          ref: ref('sales_sales_order_detail', 'sales_order_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'order_qty')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'total_price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 3
+            direction: 'desc'
+          }
+        ]
+      }
+    }
+  }
+  block v35: VizBlock {
+    label: 'Store Size & Sales correlation'
+    viz: DataTable {
+      dataset: adventure_works_product_sales
+      fields: [
+        VizFieldFull {
+          ref: ref('sales_store', 'name')
+        },
+        VizFieldFull {
+          ref: ref('sales_store', 'square_feet')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'No. Orders'
+          ref: ref('sales_sales_order_detail', 'sales_order_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Revenue'
+          ref: ref('sales_sales_order_detail', 'total_price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 3
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 1
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v36: VizBlock {
+    label: 'Resource Utilization by Product'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation utilization_rate {
+        label: 'Utilization Rate'
+        formula: @aql sum(production_work_order_routing.actual_resource_hrs) * 1.0 / production_location.availability;;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Location'
+          ref: ref('production_location', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_location', 'availability')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_work_order_routing', 'product_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_work_order_routing', 'actual_resource_hrs')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'utilization_rate'
+          format {
+            type: 'number'
+            pattern: '#,###0.00%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 4
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v37: VizBlock {
+    label: 'Safety Stock Scattering'
+    viz: ScatterChart {
+      dataset: adventure_works
+      x_col: VizFieldFull {
+        ref: ref('production_product', 'safety_stock_level')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      y_col: VizFieldFull {
+        ref: ref('production_product_inventory', 'quantity')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      group_col: VizFieldFull {
+        ref: ref('production_product_inventory', 'out_of_stock')
+        format {
+          type: 'number'
+          pattern: 'inherited'
+        }
+      }
+      label_col: VizFieldFull {
+        ref: ref('production_product', 'name')
+      }
+    }
+  }
+  block v38: VizBlock {
+    label: 'Product Availability by Location'
+    viz: PieChart {
+      dataset: adventure_works
+      calculation sum_out_of_stock {
+        label: 'Sum Out Of Stock'
+        formula: @aql sum(production_product_inventory.out_of_stock);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation count_out_of_stock {
+        label: 'Count Out Of Stock'
+        formula: @aql count(production_product_inventory.out_of_stock)
+| where(production_product_inventory.out_of_stock == 1);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation count_available {
+        label: 'Count Available'
+        formula: @aql count(production_product_inventory.out_of_stock)
+| where(production_product_inventory.out_of_stock == 0);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      legend: VizFieldFull {
+        ref: ref('production_location', 'name')
+      }
+      series {
+        field {
+          label: 'Out-of-stock'
+          ref: 'count_out_of_stock'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      series {
+        field {
+          label: 'Available'
+          ref: 'count_available'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      }
+      settings {
+        sort: 'desc'
+      }
+    }
+  }
+  block v39: VizBlock {
+    label: 'Safety Stock Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          ref: ref('production_product', 'safety_stock_level')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'quantity')
+          aggregation: 'min'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'quantity')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'location_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'out_of_stock')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 5
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 4
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 1
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 2
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v40: VizBlock {
+    label: 'BOM Complexity vs Scrap Rate'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation scrap_rate {
+        label: 'Scrap Rate'
+        formula: @aql average(production_work_order.scrapped_qty * 1.0 / production_work_order.order_qty);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          label: 'Depth'
+          ref: ref('production_bill_of_materials', 'component_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'scrap_rate'
+          format {
+            type: 'number'
+            pattern: '#,###0.00000000\\%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 2
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 1
+            direction: 'desc'
+          }
+        ]
+      }
+    }
+  }
+  block v41: VizBlock {
+    label: 'Total Departed and Total Employees by Department'
+    viz: ColumnChart {
+      dataset: adventure_works
+      x_axis: VizFieldFull {
+        label: 'Department'
+        ref: ref('human_resources_department', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            label: 'Total Departed'
+            ref: ref('human_resources_employee_department_history', 'departed')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+        series {
+          field {
+            label: 'Total Employees'
+            ref: ref('human_resources_employee_department_history', 'business_entity_id')
+            aggregation: 'count distinct'
+            format {
+              type: 'number'
+              pattern: 'inherited'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v42: VizBlock {
+    label: 'Employee Shift Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      fields: [
+        VizFieldFull {
+          label: 'Shift'
+          ref: ref('human_resources_shift', 'name')
+        },
+        VizFieldFull {
+          label: 'No. Employees'
+          ref: ref('human_resources_employee_department_history', 'business_entity_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('human_resources_employee', 'sick_leave_hours')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v43: VizBlock {
+    label: 'Department Transfer Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation num_transfers {
+        label: 'No. Transfers'
+        formula: @aql count_distinct(human_resources_department.department_id) - 1
+| with_relationships(human_resources_employee.business_entity_id - person_person.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation pay_growth {
+        label: 'Pay Growth'
+        formula: @aql max(human_resources_employee_pay_history.rate) - min(human_resources_employee_pay_history.rate)
+| with_relationships(human_resources_employee.business_entity_id - person_person.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation years_of_progression {
+        label: 'Years Of Progression'
+        formula: @aql date_diff(
+  'year',
+  min(human_resources_employee_department_history.start_date),
+  max(human_resources_employee_department_history.start_date)
+)
+| with_relationships(human_resources_employee.business_entity_id - person_person.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Employee Full Name'
+          ref: ref('person_person', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: 'num_transfers'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'pay_growth'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'years_of_progression'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 1
+            direction: 'desc'
+          }
+        ]
+      }
+    }
+  }
+  block v44: VizBlock {
+    label: 'Vendor Diversity'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation num_vendors {
+        label: 'No. Vendors'
+        formula: @aql count_distinct(purchasing_vendor.business_entity_id)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id)
+| with_relationships(purchasing_purchase_order_detail.purchase_order_id > purchasing_purchase_order_header.purchase_order_id)
+| with_relationships(purchasing_purchase_order_detail.product_id > production_product.product_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation avg_order_value {
+        label: 'Avg Order Value'
+        formula: @aql average(purchasing_purchase_order_header.sub_total)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id)
+| with_relationships(purchasing_purchase_order_detail.purchase_order_id > purchasing_purchase_order_header.purchase_order_id)
+| with_relationships(purchasing_purchase_order_detail.product_id > production_product.product_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation unique_products_supplied {
+        label: 'Unique Products Supplied'
+        formula: @aql count_distinct(production_product.product_id)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id)
+| with_relationships(purchasing_purchase_order_detail.purchase_order_id > purchasing_purchase_order_header.purchase_order_id)
+| with_relationships(purchasing_purchase_order_detail.product_id > production_product.product_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('purchasing_vendor', 'credit_rating')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'num_vendors'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'avg_order_value'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'unique_products_supplied'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v45: VizBlock {
+    label: 'Vendor Quality Trend'
+    viz: LineChart {
+      dataset: adventure_works
+      calculation avg_rejected_rate {
+        label: 'Avg Rejected Rate'
+        formula: @aql average(purchasing_purchase_order_detail.rejected_rate_standalone)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation avg_unit_price {
+        label: 'Avg Unit Price'
+        formula: @aql average(purchasing_purchase_order_detail.unit_price)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: 'avg_rejected_rate'
+        operator: 'is_not'
+        value: '0'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('purchasing_purchase_order_header', 'order_date')
+        transformation: 'datetrunc quarter'
+        format {
+          type: 'date'
+          pattern: 'yyyy Qq'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('purchasing_vendor', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: 'avg_rejected_rate'
+            format {
+              type: 'number'
+              pattern: '#,###0.00%'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+        }
+        series {
+          field {
+            label: 'Trend line of Avg Rejected Rate'
+            ref: 'avg_rejected_rate'
+            format {
+              type: 'number'
+              pattern: '#,###0.00%'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+            analytic: RegressionLine {
+              type: 'linear'
+            }
+          }
+          settings {
+            line_style: 'dashed'
+            point {
+              value: 'Trikes, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Wood Fitness'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Compete, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Crowley Sport'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Federal Sport'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'International'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Litware, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Ready Rentals'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Sport Fan Co.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Trey Research'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Victory Bikes'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'American Bikes'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Beaumont Bikes'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Circuit Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Expert Bike Co'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Mountain Works'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Allenson Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Consumer Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Mitchell Sports'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Proseware, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'SUPERSALES INC.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Chicago Rent-All'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Inner City Bikes'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Lakewood Bicycle'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Norstan Bike Hut'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Signature Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Sport Playground'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Training Systems'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Vista Road Bikes'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Advanced Bicycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Jackson Authority'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Speed Corporation'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Superior Bicycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Varsity Sport Co.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Aurora Bike Center'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Bergeron Off-Roads'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Inline Accessories'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Leaf River Terrain'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Bicycle Specialists'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Capital Road Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Carlson Specialties'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Custom Frames, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'First Rate Bicycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Hill Bicycle Center'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Midwest Sport, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Premier Sport, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Vision Cycles, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Chicago City Saddles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Northern Bike Travel'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'West Junction Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Burnett Road Warriors'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Comfort Road Bicycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Hybrid Bicycle Center'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Bloomington Multisport'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Continental Pro Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Gardner Touring Cycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: '''Hill's Bicycle Service'''
+              line_style: 'dashed'
+            }
+            point {
+              value: 'International Bicycles'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Reliance Fitness, Inc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: '''Anderson's Custom Bikes'''
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Australia Bike Retailer'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Morgan Bike Accessories'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'WestAmerica Bicycle Co.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Compete Enterprises, Inc'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'First National Sport Co.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Business Equipment Center'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'National Bike Association'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Greenwood Athletic Company'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'International Sport Assoc.'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'American Bicycles and Wheels'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Competition Bike Training Systems'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Electronic Bike Repair & Supplies'
+              line_style: 'dashed'
+            }
+            point {
+              value: 'Professional Athletic Consultants'
+              line_style: 'dashed'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v46: VizBlock {
+    label: 'Vendor Pricing Trend'
+    viz: LineChart {
+      dataset: adventure_works
+      calculation avg_unit_price {
+        label: 'Avg Unit Price'
+        formula: @aql average(purchasing_purchase_order_detail.unit_price)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: 'avg_unit_price'
+        operator: 'is_not'
+        value: '0'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('purchasing_purchase_order_header', 'order_date')
+        transformation: 'datetrunc quarter'
+        format {
+          type: 'date'
+          pattern: 'yyyy Qq'
+        }
+      }
+      legend: VizFieldFull {
+        ref: ref('purchasing_vendor', 'name')
+      }
+      y_axis {
+        series {
+          field {
+            ref: 'avg_unit_price'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+        }
+      }
+    }
+  }
+  block v47: VizBlock {
+    label: 'Vendor Suppliment Analysis'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation count_products_supplied {
+        label: 'Count Products Supplied'
+        formula: @aql count_distinct(production_product.product_id)
+| with_relationships(purchasing_product_vendor.product_id > production_product.product_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation count_subcategories_supplied {
+        label: 'Count Subcategories Supplied'
+        formula: @aql count_distinct(production_product_subcategory.product_subcategory_id)
+| with_relationships(purchasing_product_vendor.product_id > production_product.product_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'Vendor'
+          ref: ref('purchasing_vendor', 'name')
+        },
+        VizFieldFull {
+          label: 'Products Supplied'
+          ref: 'count_products_supplied'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Subcategories Supplied'
+          ref: 'count_subcategories_supplied'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('purchasing_product_vendor', 'min_order_qty')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('purchasing_product_vendor', 'max_order_qty')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 0
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v48: VizBlock {
+    label: '[STRESS-TEST] Large VizSetting'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation sales_order_processing_time {
+        label: 'Sales Order Processing Time'
+        formula: @aql date_diff(
+  'day',
+  sales_sales_order_header.ship_date,
+  sales_sales_order_header.order_date
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: sales_sales_order_header
+      }
+      calculation work_order_complition_time_days {
+        label: 'Work Order Complition Time Days'
+        formula: @aql date_diff(
+  'day',
+  production_work_order.start_date,
+  production_work_order.end_date
+);;
+        calc_type: 'dimension'
+        data_type: 'number'
+        model: production_work_order
+      }
+      calculation avg_unit_price {
+        label: 'Avg Unit Price'
+        formula: @aql average(purchasing_purchase_order_detail.unit_price)
+| with_relationships(purchasing_purchase_order_header.vendor_id > purchasing_vendor.business_entity_id);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      calculation sum_sales_order_sub_totals {
+        label: 'Sum Sales Order Sub Totals'
+        formula: @aql sum(sales_sales_order_header.sub_total);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      filter {
+        field: ref('person_person', 'full_name')
+        operator: 'is'
+        value: [
+          'Aaron A Allen',
+          'Aaron A Hayes',
+          'Aaron A Zhang',
+          'Aaron B Adams',
+          'Aaron C Campbell',
+          'Aaron C Diaz',
+          'Aaron C Scott',
+          'Aaron C Yang',
+          'Aaron E Baker',
+          'Aaron E Evans',
+          'Aaron J Carter',
+          'Aaron J Hughes',
+          'Aaron J McDonald',
+          'Aaron J Sharma',
+          'Aaron K Hall',
+          'Aaron L King'
+        ]
+      }
+      filter {
+        field: ref('sales_special_offer', 'description')
+        operator: 'is'
+        value: 'No Discount'
+      }
+      filter {
+        field: ref('sales_sales_order_detail', 'total_price')
+        operator: 'is_not'
+        value: '0'
+      }
+      filter {
+        field: ref('production_product_inventory', 'out_of_stock')
+        operator: 'is'
+        value: '0'
+      }
+      filter {
+        field: ref('sales_sales_order_header', 'sales_order_processing_time')
+        operator: 'less_than'
+        value: '30'
+      }
+      filter {
+        field: ref('purchasing_purchase_order_detail', 'rejected_rate_standalone')
+        operator: 'is'
+        value: '0'
+      }
+      filter {
+        field: 'sum_sales_order_sub_totals'
+        operator: 'greater_than'
+        value: '0'
+      }
+      filter {
+        field: 'avg_unit_price'
+        operator: 'greater_than'
+        value: '5'
+      }
+      fields: [
+        VizFieldFull {
+          ref: ref('human_resources_employee', 'business_entity_id')
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_person', 'full_name')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_email_address', 'email_address')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('person_person_phone', 'phone_number')
+        },
+        VizFieldFull {
+          label: 'Department'
+          ref: ref('human_resources_department', 'name')
+        },
+        VizFieldFull {
+          label: 'Product'
+          ref: ref('production_product', 'name')
+        },
+        VizFieldFull {
+          label: 'Location'
+          ref: ref('production_location', 'name')
+        },
+        VizFieldFull {
+          label: ''
+          ref: ref('production_product_review', 'reviewer_name')
+        },
+        VizFieldFull {
+          label: 'Product Model'
+          ref: ref('production_product_model', 'name')
+        },
+        VizFieldFull {
+          label: 'Culture'
+          ref: ref('production_culture', 'name')
+        },
+        VizFieldFull {
+          label: 'Product Description'
+          ref: ref('production_product_description', 'description')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Subcategory'
+          ref: ref('production_product_subcategory', 'name')
+        },
+        VizFieldFull {
+          label: 'Category'
+          ref: ref('production_product_subcategory', 'name')
+        },
+        VizFieldFull {
+          label: 'Sales Terriroty'
+          ref: ref('sales_sales_territory', 'name')
+        },
+        VizFieldFull {
+          label: 'Country'
+          ref: ref('person_country_region', 'name')
+        },
+        VizFieldFull {
+          label: 'Special Offer Description'
+          ref: ref('sales_special_offer', 'description')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'sales_order_id')
+          aggregation: 'count'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'total_price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_currency_rate', 'average_rate')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '#,###0.00%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_list_price_history', 'list_price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_cost_history', 'standard_cost')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'quantity')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'scrapped_rate_all'
+          format {
+            type: 'number'
+            pattern: '#,###0.0000%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          ref: ref('purchasing_purchase_order_detail', 'rejected_rate_standalone')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: '#,###0.0000%'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          ref: ref('purchasing_purchase_order_detail', 'on_time_delivery')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_product_inventory', 'out_of_stock')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'avg_unit_price'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.0000'
+            group_separator: ','
+            decimal_separator: '.'
+          }
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'sales_order_processing_time')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          ref: 'sum_sales_order_sub_totals'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        },
+        VizFieldFull {
+          ref: ref('production_work_order', 'work_order_complition_time_days')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+        sorts: [
+          SortSetting {
+            field_index: 1
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 5
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 9
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 15
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 17
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 20
+            direction: 'desc'
+          },
+          SortSetting {
+            field_index: 26
+            direction: 'asc'
+          },
+          SortSetting {
+            field_index: 28
+            direction: 'asc'
+          }
+        ]
+      }
+    }
+  }
+  block v49: VizBlock {
+    label: 'Territory Profit Analysis (c)'
+    viz: CombinationChart {
+      dataset: adventure_works
+      calculation profit_margin {
+        label: 'Profit Margin'
+        formula: @aql sum(sales_sales_order_detail.net_profit) * 1.0 / nullif(sum(sales_sales_order_detail.unit_price * sales_sales_order_detail.order_qty), 0);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      x_axis: VizFieldFull {
+        ref: ref('sales_sales_territory', 'name')
+      }
+      y_axis {
+        series {
+          mark_type: 'column'
+          field {
+            label: 'Gross Revenue'
+            ref: ref('sales_sales_order_detail', 'total_price_no_discount')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+          settings {
+            color: '#07326C'
+          }
+        }
+        series {
+          mark_type: 'column'
+          field {
+            label: 'Total Cost'
+            ref: ref('sales_sales_order_detail', 'total_cost')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+          settings {
+            color: '#F2B602'
+          }
+        }
+        series {
+          mark_type: 'column'
+          field {
+            label: 'Net Profit'
+            ref: ref('sales_sales_order_detail', 'net_profit')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+          settings {
+            color: '#18A59E'
+          }
+        }
+      }
+      y_axis {
+        settings {
+          alignment: 'right'
+        }
+        series {
+          mark_type: 'area'
+          field {
+            ref: 'profit_margin'
+            format {
+              type: 'number'
+              pattern: '#,###0.0000%'
+              group_separator: ','
+              decimal_separator: '.'
+            }
+          }
+          settings {
+            color: '#AF7DED'
+            line_style: 'dashed'
+            line_interpolation: 'smooth'
+          }
+        }
+      }
+      y_axis {
+        series {
+          mark_type: 'line'
+          field {
+            label: 'Total Discounts'
+            ref: ref('sales_sales_order_detail', 'total_price_discount')
+            aggregation: 'sum'
+            format {
+              type: 'number'
+              pattern: '[$$]#,###0.00'
+            }
+          }
+          settings {
+            color: '#A50E43'
+            line_interpolation: 'step'
+          }
+        }
+      }
+    }
+  }
+  block v50: VizBlock {
+    label: 'Exchange Rate Risk'
+    viz: DataTable {
+      dataset: adventure_works
+      calculation profit_margin {
+        label: 'Profit Margin'
+        formula: @aql sum(sales_sales_order_detail.net_profit) * 1.0 / nullif(sum(sales_sales_order_detail.unit_price * sales_sales_order_detail.order_qty), 0);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      fields: [
+        VizFieldFull {
+          label: 'From'
+          ref: ref('sales_currency_rate', 'from_currency_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'To'
+          ref: ref('sales_currency_rate', 'to_currency_code')
+          format {
+            type: 'text'
+          }
+        },
+        VizFieldFull {
+          label: 'Average Rate'
+          ref: ref('sales_currency_rate', 'average_rate')
+          aggregation: 'avg'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Rate Volatility'
+          ref: ref('sales_currency_rate', 'average_rate')
+          aggregation: 'stdev'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Affected Orders'
+          ref: ref('sales_sales_order_header', 'sales_order_id')
+          aggregation: 'count distinct'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        },
+        VizFieldFull {
+          label: 'Exposed Value'
+          ref: ref('sales_sales_order_header', 'total_due')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: 'inherited'
+          }
+        }
+      ]
+      settings {
+        show_row_number: true
+      }
+    }
+  }
+  block v51: VizBlock {
+    label: 'Subcategory Growth (Pivot)'
+    viz: PivotTable {
+      dataset: adventure_works_product_sales
+      calculation sum_sales_order_details_total_price_prev_year {
+        label: 'Sum of Total Price (prev. 1y)'
+        formula: @aql previous(
+  sum(sales_sales_order_detail.total_price),
+  order: sales_sales_order_header.order_date | year()
+);;
+        calc_type: 'measure'
+        data_type: 'number'
+      }
+      rows: [
+        VizFieldFull {
+          label: 'Subcategory'
+          ref: ref('production_product_subcategory', 'name')
+          uname: 'production_product_subcategory_name'
+        },
+        VizFieldFull {
+          ref: ref('sales_sales_order_header', 'order_date')
+          transformation: 'datetrunc year'
+          format {
+            type: 'date'
+            pattern: 'yyyy'
+          }
+          uname: 'datetrunc_year_order_date'
+        }
+      ]
+      columns: [
+        VizFieldFull {
+          label: 'Territory'
+          ref: ref('sales_sales_territory', 'name')
+        }
+      ]
+      values: [
+        VizFieldFull {
+          ref: ref('sales_sales_order_detail', 'total_price')
+          aggregation: 'sum'
+          format {
+            type: 'number'
+            pattern: '[$$]#,###0.00'
+          }
+        }
+      ]
+      settings {
+        show_row_total: true
+        show_column_total: true
+        pop {
+          field: ref('sales_sales_order_header', 'order_date')
+          duration: 1
+          granularity: 'year'
+          show_growth_rate: true
+        }
+        column_width {
+          manual_widths: [
+            ColumnWidth {
+              key: 'production_product_subcategory_name'
+              width: 119
+            },
+            ColumnWidth {
+              key: 'datetrunc_year_order_date'
+              width: 132
+            }
+          ]
+        }
+        aggregate_awareness {
+          enabled: true
+          debug_comments: true
+        }
+      }
+    }
+  }
+  interactions: [
+    FilterInteraction {
+      from: 'country_code'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'country_code'
+      to: [
+        CustomMapping {
+          block: [
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'location_id'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'location_id'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'special_offer'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'special_offer'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'inventory_shelf'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'inventory_shelf'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_unit_price_final'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_unit_price_final'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'culture_id'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'culture_id'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'product_weight'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'product_weight'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'product_size'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'product_size'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_reason_id'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_reason_id'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'department_id'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'department_id'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'shift_id'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'shift_id'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'safety_stock_level'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'safety_stock_level'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'currency_code',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'currency_code'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'currency_code'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'sales_order_date',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_order_date'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'sales_order_date'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'days_to_manufacture'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'days_to_manufacture'
+      to: [
+        CustomMapping {
+          block: [
+            'v1',
+            'v2',
+            'v3',
+            'v4',
+            'v5',
+            'v6',
+            'v7',
+            'v8',
+            'v9',
+            'v10',
+            'v11',
+            'v14',
+            'v15',
+            'v16',
+            'v20',
+            'v21',
+            'v23',
+            'v24',
+            'v25',
+            'v26',
+            'v31',
+            'v32',
+            'v34',
+            'v36',
+            'v37',
+            'v38',
+            'v39',
+            'v40',
+            'v41',
+            'v42',
+            'v43',
+            'v44',
+            'v45',
+            'v46',
+            'v47',
+            'v48',
+            'v49',
+            'v50'
+          ]
+          disabled: true
+        }
+      ]
+    },
+    FilterInteraction {
+      from: 'days_to_manufacture'
+      to: [
+        CustomMapping {
+          block: [
+            'country_code',
+            'location_id',
+            'special_offer',
+            'inventory_shelf',
+            'sales_unit_price_final',
+            'culture_id',
+            'product_weight',
+            'product_size',
+            'sales_reason_id',
+            'department_id',
+            'shift_id',
+            'safety_stock_level',
+            'currency_code',
+            'sales_order_date'
+          ]
+          disabled: true
+        }
+      ]
+    }
+  ]
+  view: CanvasLayout {
+    label: 'Canvas Layout'
+    width: 1220
+    height: 6820
+    grid_size: 20
+    block country_code {
+      position: pos(20, 20, 280, 100)
+      layer: 1
+    }
+    block location_id {
+      position: pos(320, 20, 280, 100)
+      layer: 1
+    }
+    block special_offer {
+      position: pos(620, 20, 280, 100)
+      layer: 1
+    }
+    block inventory_shelf {
+      position: pos(920, 20, 280, 100)
+      layer: 1
+    }
+    block sales_unit_price_final {
+      position: pos(20, 140, 280, 100)
+      layer: 1
+    }
+    block culture_id {
+      position: pos(320, 140, 280, 100)
+      layer: 1
+    }
+    block product_weight {
+      position: pos(620, 140, 280, 100)
+      layer: 1
+    }
+    block product_size {
+      position: pos(920, 140, 280, 100)
+      layer: 1
+    }
+    block sales_reason_id {
+      position: pos(20, 260, 280, 100)
+      layer: 1
+    }
+    block department_id {
+      position: pos(320, 260, 280, 100)
+      layer: 1
+    }
+    block shift_id {
+      position: pos(620, 260, 280, 100)
+      layer: 1
+    }
+    block safety_stock_level {
+      position: pos(920, 260, 280, 100)
+      layer: 1
+    }
+    block manual_text {
+      position: pos(20, 380, 280, 100)
+      layer: 1
+    }
+    block manual_number {
+      position: pos(320, 380, 280, 100)
+      layer: 1
+    }
+    block order_date {
+      position: pos(620, 380, 280, 100)
+      layer: 1
+    }
+    block date_drill {
+      position: pos(920, 380, 280, 100)
+      layer: 1
+    }
+    block currency_code {
+      position: pos(20, 500, 280, 100)
+      layer: 1
+    }
+    block sales_order_date {
+      position: pos(320, 500, 280, 100)
+      layer: 1
+    }
+    block days_to_manufacture {
+      position: pos(620, 500, 280, 100)
+      layer: 1
+    }
+    block v1 {
+      position: pos(20, 5370, 380, 230)
+      layer: 1
+    }
+    block v2 {
+      position: pos(420, 5370, 380, 230)
+      layer: 1
+    }
+    block v3 {
+      position: pos(820, 5370, 380, 230)
+      layer: 1
+    }
+    block v4 {
+      position: pos(20, 6170, 580, 230)
+      layer: 1
+    }
+    block v5 {
+      position: pos(620, 5620, 280, 230)
+      layer: 1
+    }
+    block v6 {
+      position: pos(920, 5620, 280, 230)
+      layer: 1
+    }
+    block v7 {
+      position: pos(20, 5870, 580, 280)
+      layer: 1
+    }
+    block v8 {
+      position: pos(620, 5870, 580, 280)
+      layer: 1
+    }
+    block v9 {
+      position: pos(20, 5620, 580, 230)
+      layer: 1
+    }
+    block v10 {
+      position: pos(620, 6170, 580, 230)
+      layer: 1
+    }
+    block v11 {
+      position: pos(20, 1020, 380, 280)
+      layer: 1
+    }
+    block v12 {
+      position: pos(420, 1320, 380, 280)
+      layer: 1
+    }
+    block v13 {
+      position: pos(820, 1320, 380, 280)
+      layer: 1
+    }
+    block v14 {
+      position: pos(820, 1020, 380, 280)
+      layer: 1
+    }
+    block v15 {
+      position: pos(420, 1020, 380, 280)
+      layer: 1
+    }
+    block v16 {
+      position: pos(770, 620, 430, 380)
+      layer: 1
+    }
+    block v17 {
+      position: pos(270, 1970, 530, 380)
+      layer: 1
+    }
+    block v18 {
+      position: pos(820, 1970, 380, 380)
+      layer: 1
+    }
+    block v19 {
+      position: pos(20, 1970, 230, 380)
+      layer: 1
+    }
+    block v20 {
+      position: pos(20, 2670, 230, 280)
+      layer: 1
+    }
+    block v21 {
+      position: pos(670, 2370, 530, 280)
+      layer: 1
+    }
+    block v22 {
+      position: pos(270, 2670, 930, 280)
+      layer: 1
+    }
+    block v23 {
+      position: pos(20, 2370, 230, 280)
+      layer: 1
+    }
+    block v24 {
+      position: pos(270, 2370, 380, 280)
+      layer: 1
+    }
+    block v25 {
+      position: pos(20, 3770, 580, 380)
+      layer: 1
+    }
+    block v26 {
+      position: pos(620, 2970, 580, 380)
+      layer: 1
+    }
+    block v27 {
+      position: pos(20, 2970, 580, 380)
+      layer: 1
+    }
+    block v28 {
+      position: pos(620, 3370, 580, 380)
+      layer: 1
+    }
+    block v29 {
+      position: pos(20, 3380, 580, 380)
+      layer: 1
+    }
+    block v30 {
+      position: pos(620, 3770, 280, 180)
+      layer: 1
+    }
+    block v31 {
+      position: pos(920, 3770, 280, 180)
+      layer: 1
+    }
+    block v32 {
+      position: pos(620, 3970, 280, 180)
+      layer: 1
+    }
+    block v33 {
+      position: pos(20, 4170, 380, 280)
+      layer: 1
+    }
+    block v34 {
+      position: pos(820, 4770, 380, 280)
+      layer: 1
+    }
+    block v35 {
+      position: pos(820, 4170, 380, 280)
+      layer: 1
+    }
+    block v36 {
+      position: pos(420, 4770, 380, 280)
+      layer: 1
+    }
+    block v37 {
+      position: pos(420, 4470, 380, 280)
+      layer: 1
+    }
+    block v38 {
+      position: pos(20, 4470, 380, 280)
+      layer: 1
+    }
+    block v39 {
+      position: pos(820, 4470, 380, 280)
+      layer: 1
+    }
+    block v40 {
+      position: pos(20, 4770, 380, 280)
+      layer: 1
+    }
+    block v41 {
+      position: pos(20, 1320, 380, 280)
+      layer: 1
+    }
+    block v42 {
+      position: pos(920, 3970, 280, 180)
+      layer: 1
+    }
+    block v43 {
+      position: pos(420, 4170, 380, 280)
+      layer: 1
+    }
+    block v44 {
+      position: pos(420, 5070, 380, 280)
+      layer: 1
+    }
+    block v45 {
+      position: pos(20, 1620, 580, 330)
+      layer: 1
+    }
+    block v46 {
+      position: pos(620, 1620, 580, 330)
+      layer: 1
+    }
+    block v47 {
+      position: pos(820, 5070, 380, 280)
+      layer: 1
+    }
+    block v48 {
+      position: pos(20, 6420, 1180, 380)
+      layer: 1
+    }
+    block v49 {
+      position: pos(20, 620, 730, 380)
+      layer: 1
+    }
+    block v50 {
+      position: pos(20, 5070, 380, 280)
+      layer: 1
+    }
+    block v51 {
+      position: pos(620, 3380, 580, 380)
+      layer: 1
+    }
+  }
+  settings {
+    cache_duration: 1440
+  }
+}

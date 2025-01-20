@@ -1,0 +1,33 @@
+Model person_address_type {
+  type: 'table'
+  label: 'Address Type'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension address_type_id {
+    label: 'Address Type Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.address_type_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"person"."address_type"'
+}

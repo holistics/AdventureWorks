@@ -1,0 +1,63 @@
+Model production_bill_of_materials {
+  type: 'table'
+  label: 'Bill Of Materials'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension bill_of_materials_id {
+    label: 'Bill Of Materials Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bill_of_materials_id }};;
+  }
+  dimension product_assembly_id {
+    label: 'Product Assembly Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_assembly_id }};;
+  }
+  dimension component_id {
+    label: 'Component Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.component_id }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+  dimension end_date {
+    label: 'End Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.end_date }};;
+  }
+  dimension unit_measure_code {
+    label: 'Unit Measure Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.unit_measure_code }};;
+  }
+  dimension bom_level {
+    label: 'Bom Level'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.bom_level }};;
+  }
+  dimension per_assembly_qty {
+    label: 'Per Assembly Qty'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.per_assembly_qty }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."bill_of_materials"'
+}

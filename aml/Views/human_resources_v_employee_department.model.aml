@@ -1,0 +1,69 @@
+Model human_resources_v_employee_department {
+  type: 'table'
+  label: 'V Employee Department'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension title {
+    label: 'Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.title }};;
+  }
+  dimension first_name {
+    label: 'First Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.first_name }};;
+  }
+  dimension middle_name {
+    label: 'Middle Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.middle_name }};;
+  }
+  dimension last_name {
+    label: 'Last Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.last_name }};;
+  }
+  dimension suffix {
+    label: 'Suffix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.suffix }};;
+  }
+  dimension job_title {
+    label: 'Job Title'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_title }};;
+  }
+  dimension department {
+    label: 'Department'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.department }};;
+  }
+  dimension group_name {
+    label: 'Group Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.group_name }};;
+  }
+  dimension start_date {
+    label: 'Start Date'
+    type: 'date'
+    hidden: false
+    definition: @sql {{ #SOURCE.start_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."v_employee_department"'
+}

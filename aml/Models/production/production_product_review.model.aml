@@ -1,0 +1,57 @@
+Model production_product_review {
+  type: 'table'
+  label: 'Product Review'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension product_review_id {
+    label: 'Product Review Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_review_id }};;
+  }
+  dimension product_id {
+    label: 'Product Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.product_id }};;
+  }
+  dimension reviewer_name {
+    label: 'Reviewer Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.reviewer_name }};;
+  }
+  dimension review_date {
+    label: 'Review Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.review_date }};;
+  }
+  dimension email_address {
+    label: 'Email Address'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.email_address }};;
+  }
+  dimension rating {
+    label: 'Rating'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.rating }};;
+  }
+  dimension comments {
+    label: 'Comments'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.comments }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"production"."product_review"'
+}

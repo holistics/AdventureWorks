@@ -1,0 +1,105 @@
+Model human_resources_v_job_candidate {
+  type: 'table'
+  label: 'V Job Candidate'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension job_candidate_id {
+    label: 'Job Candidate Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.job_candidate_id }};;
+  }
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension name_prefix {
+    label: 'Name.prefix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Name.Prefix }};;
+  }
+  dimension name_first {
+    label: 'Name.first'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Name.First }};;
+  }
+  dimension name_middle {
+    label: 'Name.middle'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Name.Middle }};;
+  }
+  dimension name_last {
+    label: 'Name.last'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Name.Last }};;
+  }
+  dimension name_suffix {
+    label: 'Name.suffix'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Name.suffix }};;
+  }
+  dimension skills {
+    label: 'Skills'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Skills }};;
+  }
+  dimension addr_type {
+    label: 'Addr.type'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Addr.type }};;
+  }
+  dimension addr_loc_country_region {
+    label: 'Addr.loc.country Region'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Addr.Loc.country_region }};;
+  }
+  dimension addr_loc_state {
+    label: 'Addr.loc.state'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Addr.Loc.State }};;
+  }
+  dimension addr_loc_city {
+    label: 'Addr.loc.city'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Addr.Loc.city }};;
+  }
+  dimension addr_postal_code {
+    label: 'Addr.postal Code'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.Addr.postal_code }};;
+  }
+  dimension e_mail {
+    label: 'E Mail'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.EMail }};;
+  }
+  dimension web_site {
+    label: 'Web Site'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.WebSite }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"human_resources"."v_job_candidate"'
+}

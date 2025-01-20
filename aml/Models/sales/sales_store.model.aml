@@ -1,0 +1,50 @@
+Model sales_store {
+  type: 'table'
+  label: 'Store'
+  description: ''
+  data_source_name: 'adventure_works'
+  dimension business_entity_id {
+    label: 'Business Entity Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.business_entity_id }};;
+  }
+  dimension name {
+    label: 'Name'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.name }};;
+  }
+  dimension sales_person_id {
+    label: 'Sales Person Id'
+    type: 'number'
+    hidden: false
+    definition: @sql {{ #SOURCE.sales_person_id }};;
+  }
+  dimension demographics {
+    label: 'Demographics'
+    type: 'unknown'
+    hidden: false
+    definition: @sql {{ #SOURCE.demographics }};;
+  }
+  dimension row_guid {
+    label: 'Row Guid'
+    type: 'text'
+    hidden: false
+    definition: @sql {{ #SOURCE.row_guid }};;
+  }
+  dimension modified_date {
+    label: 'Modified Date'
+    type: 'datetime'
+    hidden: false
+    definition: @sql {{ #SOURCE.modified_date }};;
+  }
+  dimension square_feet {
+    label: "Square Feet"
+    type: "number"
+    definition: @sql UNNEST(xpath('/ns:StoreSurvey/ns:SquareFeet/text()', {{ demographics }}, '{{ns,http://schemas.microsoft.com/sqlserver/2004/07/adventure-works/StoreSurvey}}'))::varchar::integer;;
+  }
+
+  owner: 'admin@tenant40.com'
+  table_name: '"sales"."store"'
+}
